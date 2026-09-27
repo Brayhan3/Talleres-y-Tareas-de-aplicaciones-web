@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario T3</title>
+  <!-- Vinculación del archivo CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Vinculación del archivo JavaScript -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header>
+  <!-- Contenedor de imagen del logo -->
+  <img id="logoULEAM-img" src="Img/LOGO-ULEAM-HORIZONTAL.png" alt="Logo de la ULEAM">
+
+  <!-- Bloque de texto apilado -->
+  <div class="header-texto">
+    <span class="texto-tarea">#3 Tarea: Formulario con javascript</span>
+    <h1>Registro de cuenta</h1>
+  </div>
+  </header>
+
+  <section class="contenedor">
+    <h2 class="titulo-bienvenida"> Bienvenido a la bolsa de empleo de la ULEAM  </h2>
+  </section>
+    
+  <main class="contenedor">
+    <h3>Datos Personales</h3>
+
+      <form action="#" method="POST" class="formulario_ingreso">
+        <div class="campo">
+          <label for="nombre">Nombres:</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+        </div>
+
+        <div class="campo">
+          <label for="apellido">Apellidos:</label>
+          <input type="text" id="apellido" name="apellido" autocomplete="family-name" required>
+        </div>
+
+        <!-- Tipo y Número de documento en la misma fila (se apilan en móviles) -->
+        <div class="campo-documento">
+          <div class="campo">
+            <label for="tipo-doc">Tipo de documento:</label>
+            <select id="tipo-doc" name="tipo_doc" required>
+              <option value="cedula" selected>Cédula</option>
+              <option value="pasaporte">Pasaporte</option>
+              <option value="ruc">RUC</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="num-doc">Número de documento:</label>
+            <input 
+              type="text" 
+              id="num-doc" 
+              name="num_doc" 
+              placeholder="1312345678" 
+              maxlength="10" 
+              inputmode="numeric" 
+              required
+            >
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" name="correo" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <label for="pais">País:</label>
+          <input type="text" id="pais" name="pais" autocomplete="country-name" required>
+        </div>
+
+        <div class="campo">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" name="direccion" autocomplete="street-address" required>
+        </div>
+
+        <button type="submit" class="btn-guardar">Guardar Registro</button>
+      </form>
+    </main>
+</body>
+
+</html>
