@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="contenedor">
+        <h1>Calculadora por iteraciones</h1>
+        <ul>
+            <li>Ingrese un número cualquiera en ambos campos</li>
+            <li>Las operaciones se realizarán de forma secuencial y directa, es decir: suma, resta, multiplicación y división.</li>
+        </ul>
+    </header>
+    
+    <section class="contenedor">
+        <form id="calculadora-sin-interfaz">
+            <input type="number" id="numero1" placeholder="Ingrese un número" step="any" required>
+            <input type="number" id="numero2" placeholder="Ingrese otro número" step="any" required>
+            <button type="submit">Comenzar iteraciones</button>
+        </form>
+        
+        <!-- Contenedor donde se escribien los resultados -->
+        <div id="resultados" style="margin-top: 20px;"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
