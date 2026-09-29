@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     break;
             }
 
-            // Crear un párrafo <p> en el DOM e insertarlo en la página
+            // Crear un párrafo <p> en el DOM e insertarlo en la página para mostrar el resltado
             const parrafo = document.createElement("p");
             parrafo.textContent = mensaje;
             contenedorResultados.appendChild(parrafo);
