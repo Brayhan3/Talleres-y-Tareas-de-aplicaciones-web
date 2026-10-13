@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tareas>
+ <tarea codigo="1791908273355">
+ <titulo>Revisión 1</titulo>
+
+<descripcion>Revisar el almacenamiento del gestor</descripcion>
+ <fecha>13/10/2026</fecha>
+ </tarea>
+ <tarea codigo="1791908344562">
+ <titulo>Terminar guía de Windows Server</titulo>
+
+<descripcion>Terminar de configurar la conexión entre maquinas</descripcion>
+ <fecha>13/10/2026</fecha>
+ </tarea>
+ <tarea codigo="1791908372866">
+ <titulo>Empezar el curso de Udemy</titulo>
+
+<descripcion>Empezar a organizarme con el curso</descripcion>
+ <fecha>13/10/2026</fecha>
+ </tarea>
+</tareas>
