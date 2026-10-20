@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil del Graduado — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER: sin "Portal institucional", logo 150px -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="index.html">Buscar ofertas</a>
+      <a href="solicitudes.html">Mis Solicitudes</a>
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          Mi perfil
+        </button>
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil.html">Datos Personales</a>
+          <a href="#">Configuración de Cuenta</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="page-content" style="max-width:1100px;">
+    <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+    <h1 class="page-title">Perfil del Graduado</h1>
+    <p class="page-subtitle">Mantén tus datos de contacto al día, consulta tus alertas y prepara tu hoja de vida.</p>
+
+    <div class="perfil-layout">
+
+      <!-- ══ COLUMNA IZQUIERDA ══ -->
+      <div>
+
+        <!-- Avatar + nombre -->
+        <div class="perfil-avatar-card">
+          <div class="avatar-circulo">
+            BT
+            <div class="avatar-badge"></div>
+          </div>
+          <div class="perfil-nombre">Brayhan Torres</div>
+          <div class="perfil-carrera">Ingeniería en Software · ULEAM</div>
+        </div>
+
+        <!-- Datos Personales -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">Datos Personales</div>
+
+          <!-- Correo -->
+          <div class="dato-fila">
+            <div class="dato-label">Correo / Contacto</div>
+            <div class="dato-valor-wrap">
+              <!-- Texto visible cuando no se está editando -->
+              <span class="dato-valor" id="val-correo">ejemplo@gmail.com</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('correo')">Editar</button>
+            </div>
+            <!-- Input que aparece al editar -->
+            <div class="dato-edit-wrap" id="edit-correo">
+              <input type="email" id="input-correo" placeholder="nuevo@correo.com">
+              <span class="error-msg">Ingresa un correo válido.</span>
+              <div class="dato-edit-acciones">
+                <!-- Valida y guarda el nuevo valor -->
+                <button class="btn-guardar-dato" onclick="guardarDato('correo', 'email')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('correo')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="dato-fila">
+            <div class="dato-label">Número Telefónico / WhatsApp</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-telefono">+593 9X XXX XXXX</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('telefono')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-telefono">
+              <input type="tel" id="input-telefono" placeholder="09XXXXXXXX">
+              <span class="error-msg">Ingresa un número válido (10 dígitos).</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('telefono', 'tel')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('telefono')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formación académica (misma lógica que registro) -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">
+            Formación académica
+            <!-- Botón global de añadir (abre la primera sección disponible) -->
+          </div>
+
+          <!-- Títulos de pregrado -->
+          <div class="formacion-fila">
+            <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 3L2 8l10 5 10-5-10-5z"/>
+              <path d="M2 8v6c0 3 4.5 5 10 5s10-2 10-5V8"/>
+            </svg>
+            <div class="formacion-info">
+              <strong>Títulos de pregrado</strong>
+              <!-- Ítem ya guardado de ejemplo -->
+              <div id="campos-pregrado">
+                <div class="input-inline-fila">
+                  <input type="text" value="Ingeniería en Sistemas" readonly>
+                  <button class="btn-borrar" onclick="this.closest('.input-inline-fila').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+            <div class="formacion-acciones">
+              <button class="btn-sm" onclick="agregarCampo('campos-pregrado')">+ Añadir título</button>
+              <button class="btn-sm" onclick="document.getElementById('file-pregrado').click()">↑ Adjuntar</button>
+              <input type="file" id="file-pregrado" class="input-archivo" accept=".pdf,.jpg,.png">
+            </div>
+          </div>
+
+          <!-- Maestrías -->
+          <div class="formacion-fila">
+            <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            <div class="formacion-info">
+              <strong>Maestrías cursadas</strong>
+              <div id="campos-maestria">
+                <div class="input-inline-fila">
+                  <input type="text" value="Maestría en Tecnologías de la Información" readonly>
+                  <button class="btn-borrar" onclick="this.closest('.input-inline-fila').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+            <div class="formacion-acciones">
+              <button class="btn-sm" onclick="agregarCampo('campos-maestria')">+ Añadir maestría</button>
+              <button class="btn-sm" onclick="document.getElementById('file-maestria').click()">↑ Adjuntar</button>
+              <input type="file" id="file-maestria" class="input-archivo" accept=".pdf,.jpg,.png">
+            </div>
+          </div>
+
+          <!-- Certificados -->
+          <div class="formacion-fila">
+            <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <div class="formacion-info">
+              <strong>Certificados obtenidos</strong>
+              <div id="campos-cert">
+                <div class="input-inline-fila">
+                  <input type="text" value="Desarrollo de aplicaciones web" readonly>
+                  <button class="btn-borrar" onclick="this.closest('.input-inline-fila').remove()">✕</button>
+                </div>
+              </div>
+            </div>
+            <div class="formacion-acciones">
+              <button class="btn-sm" onclick="agregarCampo('campos-cert')">+ Añadir certificado</button>
+              <button class="btn-sm" onclick="document.getElementById('file-cert').click()">↑ Adjuntar</button>
+              <input type="file" id="file-cert" class="input-archivo" accept=".pdf,.jpg,.png">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin columna izquierda -->
+
+      <!-- ══ COLUMNA DERECHA ══ -->
+      <div>
+
+        <!-- Centro de Notificaciones -->
+        <div class="perfil-seccion" style="margin-bottom:1rem;">
+          <div class="notif-header">
+            <span class="notif-titulo">
+              🔔 Centro de Notificaciones y Alertas
+              <!-- Badge con conteo de no leídas — JS lo actualiza -->
+              <span class="notif-badge" id="notif-badge">3 sin leer</span>
+            </span>
+            <!-- Atenúa todas las notificaciones y oculta el badge -->
+            <button class="btn-marcar-leidas" onclick="marcarTodasLeidas()">Marcar como leídas</button>
+          </div>
+
+          <!-- Notificación 1 -->
+          <div class="notif-item" id="notif-1">
+            <div class="notif-icono">💼</div>
+            <div class="notif-info">
+              <div class="notif-texto">Nueva oferta afín a tu carrera</div>
+              <div class="notif-subtexto">Desarrollador Junior · Vacante ficticia en modalidad remota</div>
+            </div>
+            <span class="notif-tiempo">Hace 1 h</span>
+          </div>
+
+          <!-- Notificación 2 -->
+          <div class="notif-item" id="notif-2">
+            <div class="notif-icono">📋</div>
+            <div class="notif-info">
+              <div class="notif-texto">Tu solicitud pasó a revisión</div>
+              <div class="notif-subtexto">Una empresa ficticia está evaluando tu postulación de ejemplo.</div>
+            </div>
+            <span class="notif-tiempo">Hace 3 h</span>
+          </div>
+
+          <!-- Notificación 3 -->
+          <div class="notif-item" id="notif-3">
+            <div class="notif-icono">📄</div>
+            <div class="notif-info">
+              <div class="notif-texto">Prepara tu hoja de vida</div>
+              <div class="notif-subtexto">Adjunta tu CV para abrirte paso al buscar una oportunidad.</div>
+            </div>
+            <span class="notif-tiempo">Ayer</span>
+          </div>
+        </div>
+
+        <!-- Gestión de CV -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">📄 Gestión de Hoja de Vida (CV)</div>
+          <p style="font-size:0.83rem; color:var(--texto-suave); margin-bottom:1rem;">
+            Adjunta una versión actualizada de tu CV para acompañar tus solicitudes.
+          </p>
+
+          <div class="cv-zona-upload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 15V3m0 0l-4 4m4-4l4 4"/>
+              <path d="M2 17v2a2 2 0 002 2h16a2 2 0 002-2v-2"/>
+            </svg>
+            <p class="cv-zona-texto">Aún no has adjuntado tu hoja de vida.<br>Arrastra tu archivo aquí o selecciónalo desde tu equipo.</p>
+
+            <!-- Input file oculto — el botón lo activa -->
+            <input type="file" id="input-cv" class="input-archivo" accept=".pdf,.doc,.docx"
+                   onchange="mostrarNombreCV(this)">
+
+            <button class="btn-seleccionar" onclick="document.getElementById('input-cv').click()">
+              ↑ Seleccionar archivo
+            </button>
+            <span class="cv-formatos">PDF, DOC o DOCX · Hasta 10 MB</span>
+          </div>
+
+          <!-- Nombre del archivo seleccionado — oculto hasta que el usuario elija uno -->
+          <p class="cv-archivo-nombre" id="cv-nombre"></p>
+        </div>
+
+      </div><!-- fin columna derecha -->
+    </div><!-- fin perfil-layout -->
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/perfil.js"></script>
+</body>
+</html>

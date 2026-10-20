@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolsa de Empleos — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <!-- Logo fijo a 150px de ancho según indicación -->
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="index.html" class="activo">Buscar ofertas</a>
+      <a href="solicitudes.html">Mis postulaciones</a>
+
+      <!-- Menú Mi perfil con dropdown -->
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <!-- Ícono de persona -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          Mi perfil
+        </button>
+        <!-- Dropdown: se muestra/oculta con la clase 'abierto' -->
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil.html">Datos Personales</a>
+          <a href="#">Configuración de Cuenta</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO: título + buscador -->
+  <section class="hero">
+    <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+    <h1>Encuentra tu próxima oportunidad</h1>
+
+    <div class="buscador">
+      <!-- Input de búsqueda por texto -->
+      <div class="buscador-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="buscar-texto" placeholder="Busca por palabra clave, cargo o empresa">
+      </div>
+
+      <!-- Select de ubicación -->
+      <select class="buscador-ubicacion" id="buscar-ubicacion" onchange="aplicarFiltros()">
+        <option value="">Todas las ubicaciones</option>
+        <option value="Manta">Manta</option>
+        <option value="Portoviejo">Portoviejo</option>
+        <option value="Ecuador">Ecuador (Remoto)</option>
+      </select>
+
+      <button class="btn-buscar" onclick="aplicarFiltros()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        Buscar ofertas
+      </button>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL: sidebar + ofertas -->
+  <div class="layout-principal">
+
+    <!-- ── SIDEBAR DE FILTROS ── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>☰ Filtros</span>
+        <!-- Limpiar resetea todos los filtros y recarga las ofertas -->
+        <button class="btn-limpiar" onclick="limpiarFiltros()">Limpiar</button>
+      </div>
+
+      <!-- Filtro: Área profesional (select) -->
+      <div class="filtro-grupo">
+        <label>Área profesional</label>
+        <select id="filtro-area" onchange="aplicarFiltros()">
+          <option value="">Todas las áreas</option>
+          <option value="Administración">Administración</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Contabilidad">Contabilidad</option>
+          <option value="Diseño">Diseño</option>
+          <option value="Salud">Salud</option>
+        </select>
+      </div>
+
+      <!-- Filtro: Modalidad (checkboxes) -->
+      <div class="filtro-grupo">
+        <label>Modalidad de trabajo</label>
+        <div class="check-lista">
+          <label><input type="checkbox" value="Presencial"     onchange="aplicarFiltros()"> Presencial</label>
+          <label><input type="checkbox" value="Híbrida"        onchange="aplicarFiltros()"> Híbrida</label>
+          <label><input type="checkbox" value="Remota"         onchange="aplicarFiltros()"> Remota</label>
+        </div>
+      </div>
+
+      <!-- Filtro: Jornada (checkboxes) -->
+      <div class="filtro-grupo">
+        <label>Tipo de jornada</label>
+        <div class="check-lista">
+          <label><input type="checkbox" value="Tiempo completo" onchange="aplicarFiltros()"> Tiempo completo</label>
+          <label><input type="checkbox" value="Medio tiempo"    onchange="aplicarFiltros()"> Medio tiempo</label>
+          <label><input type="checkbox" value="Por proyecto"    onchange="aplicarFiltros()"> Por proyecto</label>
+        </div>
+      </div>
+
+      <!-- Filtro: Experiencia (checkboxes) -->
+      <div class="filtro-grupo">
+        <label>Experiencia</label>
+        <div class="check-lista">
+          <label><input type="checkbox" value="Sin experiencia" onchange="aplicarFiltros()"> Sin experiencia</label>
+          <label><input type="checkbox" value="1 a 3 años"      onchange="aplicarFiltros()"> 1 a 3 años</label>
+          <label><input type="checkbox" value="Más de 3 años"   onchange="aplicarFiltros()"> Más de 3 años</label>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── ZONA DE OFERTAS ── -->
+    <div class="zona-ofertas">
+
+      <!-- Sección: Recomendadas -->
+      <div class="seccion-ofertas" id="seccion-recomendadas">
+        <div class="seccion-ofertas-header">
+          <h2>✦ Ofertas Recomendadas para ti</h2>
+        </div>
+
+        <!-- Aviso para completar perfil -->
+        <div class="aviso-perfil">
+          ! Aún no has añadido tu formación. Complétala para ver recomendaciones personalizadas.
+          <a href="perfil.html">Completar perfil →</a>
+        </div>
+
+        <!-- Grid de tarjetas recomendadas — se rellena con JS -->
+        <div class="grid-recomendadas" id="grid-recomendadas"></div>
+      </div>
+
+      <!-- Sección: Explora más ofertas -->
+      <div class="seccion-ofertas">
+        <div class="lista-header">
+          <h2>Explora más ofertas</h2>
+          <!-- Ordenamiento: cambia el criterio y vuelve a renderizar -->
+          <select id="ordenar" onchange="aplicarFiltros()">
+            <option value="reciente">Más recientes</option>
+            <option value="salario">Mayor salario</option>
+          </select>
+        </div>
+
+        <!-- Lista de ofertas — se rellena con JS -->
+        <div id="lista-ofertas"></div>
+      </div>
+
+    </div><!-- fin zona-ofertas -->
+  </div><!-- fin layout-principal -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <!-- Datos y lógica: datos.js primero, luego el resto -->
+  <script src="../js/datos.js"></script>
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro y Perfil del Graduado — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM">
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+    <h1 class="page-title">Registro y Perfil del Graduado</h1>
+    <p class="page-subtitle">Completa tus datos de contacto y añade tu formación para crear tu perfil en la Bolsa de Empleo.</p>
+
+    <!-- ── SECCIÓN 1: Datos Personales ── -->
+    <section class="seccion">
+      <h2 class="seccion-titulo">Datos Personales</h2>
+      <p class="seccion-desc">Ingresa la información con la que podrán contactarte.</p>
+
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Escribe tus nombres y apellidos">
+        <span class="error-msg">Este campo es obligatorio.</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefono">Número telefónico</label>
+          <input type="tel" id="telefono" placeholder="Ej.: 09XXXXXXXX">
+          <span class="error-msg">Ingresa un número válido (10 dígitos).</span>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico de contacto</label>
+          <input type="email" id="correo" placeholder="Ej.: nombre@correo.com">
+          <span class="error-msg">Ingresa un correo válido.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECCIÓN 2: Formación y Certificados ── -->
+    <section class="seccion">
+      <h2 class="seccion-titulo">Formación y Certificados</h2>
+      <p class="seccion-desc">Añade la información de tu formación o adjunta los documentos que la respaldan.</p>
+
+      <!-- FILA: Títulos de pregrado -->
+      <div class="formacion-fila">
+        <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 3L2 8l10 5 10-5-10-5z"/>
+          <path d="M2 8v6c0 3 4.5 5 10 5s10-2 10-5V8"/>
+        </svg>
+        <div class="formacion-info">
+          <strong>Títulos de pregrado</strong>
+          <span>Añade tus títulos universitarios.</span>
+          <!-- Los campos creados por agregarCampo() se insertan aquí -->
+          <div id="campos-pregrado"></div>
+        </div>
+        <div class="formacion-acciones">
+          <!-- agregarCampo() verifica el último campo antes de crear uno nuevo -->
+          <button class="btn-sm" onclick="agregarCampo('campos-pregrado')">+ Añadir título</button>
+          <button class="btn-sm" onclick="document.getElementById('file-pregrado').click()">↑ Adjuntar documento</button>
+          <input type="file" id="file-pregrado" class="input-archivo" accept=".pdf,.jpg,.png">
+        </div>
+      </div>
+
+      <!-- FILA: Maestrías -->
+      <div class="formacion-fila">
+        <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        <div class="formacion-info">
+          <strong>Maestrías cursadas</strong>
+          <span>Añade tus estudios de posgrado.</span>
+          <div id="campos-maestria"></div>
+        </div>
+        <div class="formacion-acciones">
+          <button class="btn-sm" onclick="agregarCampo('campos-maestria')">+ Añadir maestría</button>
+          <button class="btn-sm" onclick="document.getElementById('file-maestria').click()">↑ Adjuntar documento</button>
+          <input type="file" id="file-maestria" class="input-archivo" accept=".pdf,.jpg,.png">
+        </div>
+      </div>
+
+      <!-- FILA: Certificados -->
+      <div class="formacion-fila">
+        <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <div class="formacion-info">
+          <strong>Certificados obtenidos</strong>
+          <span>Añade cursos, idiomas u otros certificados.</span>
+          <div id="campos-cert"></div>
+        </div>
+        <div class="formacion-acciones">
+          <button class="btn-sm" onclick="agregarCampo('campos-cert')">+ Añadir certificado</button>
+          <button class="btn-sm" onclick="document.getElementById('file-cert').click()">↑ Adjuntar documento</button>
+          <input type="file" id="file-cert" class="input-archivo" accept=".pdf,.jpg,.png">
+        </div>
+      </div>
+
+      <p class="formacion-nota">Documentos en PDF, JPG o PNG · Hasta 10 MB por archivo.</p>
+    </section>
+
+    <!-- ── BARRA INFERIOR ── -->
+    <div class="barra-footer">
+      <p class="ayuda">
+        ¿Necesitas ayuda? <a href="#">Contactar a soporte</a>
+      </p>
+      <button class="btn-continuar" onclick="validarRegistro()">
+        Guardar y Continuar →
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+</body>
+</html>

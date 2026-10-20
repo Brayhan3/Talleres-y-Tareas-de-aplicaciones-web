@@ -1,0 +1,1016 @@
+/* =============================================
+   ULEAM — Bolsa de Empleos
+   styles.css — Base global
+   ============================================= */
+
+/* --- Variables --- */
+:root {
+  --rojo:       #602020;
+  --rojo-hover: #4a1818;
+  --fondo:      #F2F2F2;
+  --blanco:     #FFFFFF;
+  --texto:      #1A1A1A;
+  --texto-suave:#555555;
+  --borde:      #DDDDDD;
+  --sombra:     0 2px 12px rgba(0,0,0,0.08);
+  --radio:      8px;
+  --fuente:     'Segoe UI', system-ui, sans-serif;
+}
+
+/* --- Reset mínimo --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--fuente);
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+a { color: var(--rojo); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* =============================================
+   HEADER / NAV
+   ============================================= */
+.site-header {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .logo img { height: 150px; }
+.site-header nav { display: flex; gap: 1.5rem; align-items: center; }
+.site-header nav a { color: var(--texto-suave); font-size: 0.9rem; }
+.site-header nav a:hover { color: var(--rojo); text-decoration: none; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer {
+  margin-top: auto;
+  background: var(--blanco);
+  border-top: 1px solid var(--borde);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+.site-footer a { color: var(--texto-suave); }
+.site-footer a:hover { color: var(--rojo); }
+.footer-links { display: flex; gap: 1.5rem; }
+
+/* =============================================
+   CONTENIDO PRINCIPAL
+   ============================================= */
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* =============================================
+   TARJETA (card)
+   ============================================= */
+.card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+}
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+/* =============================================
+   BOTONES
+   ============================================= */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--radio);
+  font-size: 0.95rem;
+  font-family: var(--fuente);
+  cursor: pointer;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+.btn-primary:hover { background: var(--rojo-hover); text-decoration: none; color: var(--blanco); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--rojo);
+  border: 1.5px solid var(--rojo);
+}
+.btn-secondary:hover { background: #f9eded; text-decoration: none; }
+
+.btn-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* Stack de botones verticales con separación */
+.btn-stack { display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* =============================================
+   INPUTS / FORMULARIO
+   ============================================= */
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+.form-group label { font-size: 0.85rem; font-weight: 500; color: var(--texto); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  font-size: 0.95rem;
+  font-family: var(--fuente);
+  color: var(--texto);
+  background: var(--blanco);
+  transition: border-color 0.15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--rojo);
+}
+.form-group .error-msg {
+  font-size: 0.78rem;
+  color: #c0392b;
+  display: none;
+}
+.form-group.error input,
+.form-group.error select { border-color: #c0392b; }
+.form-group.error .error-msg { display: block; }
+
+/* =============================================
+   MODAL
+   ============================================= */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.activo { display: flex; }
+.modal {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+.modal-titulo { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.modal-msg { font-size: 0.9rem; color: var(--texto-suave); margin-bottom: 1.5rem; }
+.modal-cerrar {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: none; border: none;
+  font-size: 1.2rem; cursor: pointer;
+  color: var(--texto-suave);
+}
+.modal-acciones { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.modal-acciones .btn { width: auto; padding: 0.6rem 1.2rem; }
+
+/* =============================================
+   AVISO (éxito / error)
+   ============================================= */
+.aviso {
+  display: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.aviso.exito  { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+.aviso.error  { background: #fdedec; color: #c0392b; border: 1px solid #f5b7b1; }
+.aviso.activo { display: block; }
+
+/* =============================================
+   LINK DE AYUDA
+   ============================================= */
+.ayuda {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+.ayuda a { color: var(--rojo); font-weight: 500; }
+
+/* =============================================
+   UTILIDADES
+   ============================================= */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+  .site-header { padding: 0 1rem; }
+  .card { padding: 1.5rem; }
+  .site-footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* =============================================
+   REGISTRO — Estilos específicos
+   ============================================= */
+
+/* Contenedor de página (no centrado, alineado arriba) */
+.page-content {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Eyebrow: texto pequeño encima del título */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--rojo);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* Título de página */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+/* Subtítulo/descripción de página */
+.page-subtitle {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-bottom: 1.75rem;
+}
+
+/* Sección con borde (Datos personales, Formación) */
+.seccion {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.seccion-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.seccion-desc {
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  margin-bottom: 1.25rem;
+}
+
+/* Grid de 2 columnas para inputs lado a lado */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Fila de formación (ícono + texto + acciones) */
+.formacion-fila {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+.formacion-fila:last-of-type { border-bottom: none; }
+
+/* Ícono de la fila de formación */
+.formacion-icono {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: var(--rojo);
+  margin-top: 2px;
+}
+
+/* Texto descriptivo de la fila */
+.formacion-info { flex: 1; }
+.formacion-info strong { font-size: 0.9rem; display: block; }
+.formacion-info span  { font-size: 0.8rem; color: var(--texto-suave); }
+
+/* Botones pequeños de acción (Añadir / Adjuntar) */
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  border-radius: var(--radio);
+  border: 1.5px solid var(--borde);
+  background: var(--blanco);
+  color: var(--texto);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--fuente);
+  transition: border-color 0.15s;
+}
+.btn-sm:hover { border-color: var(--rojo); color: var(--rojo); }
+
+/* Acciones alineadas a la derecha en cada fila */
+.formacion-acciones {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+/* Input inline que aparece al hacer clic en Añadir */
+.input-inline {
+  margin-top: 0.5rem;
+  display: none; /* JS lo muestra con .visible */
+  width: 100%;
+}
+.input-inline.visible { display: block; }
+.input-inline input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--rojo);
+  border-radius: var(--radio);
+  font-size: 0.88rem;
+  font-family: var(--fuente);
+}
+.input-inline input:focus { outline: none; }
+
+/* Input de archivo oculto — se activa con el btn-sm */
+.input-archivo { display: none; }
+
+/* Nota al pie de la sección de formación */
+.formacion-nota {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  margin-top: 0.75rem;
+}
+
+/* Barra inferior: ayuda a la izquierda, botón a la derecha */
+.barra-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Botón principal con flecha → */
+.btn-continuar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--rojo);
+  color: var(--blanco);
+  border: none;
+  border-radius: var(--radio);
+  font-size: 0.95rem;
+  font-family: var(--fuente);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-continuar:hover { background: var(--rojo-hover); }
+
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+  .formacion-acciones { flex-direction: column; }
+  .barra-footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+}
+
+/* ── Input inline fijado (bloqueado visualmente) ── */
+.input-inline input[readonly] {
+  background: #f5f5f5;
+  color: var(--texto-suave);
+  border-color: var(--borde);
+  cursor: not-allowed;
+}
+
+/* Fila del input inline: campo + botones Fijar/Borrar */
+.input-inline-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.input-inline-fila input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--rojo);
+  border-radius: var(--radio);
+  font-size: 0.88rem;
+  font-family: var(--fuente);
+}
+.input-inline-fila input:focus { outline: none; }
+.input-inline-fila input[readonly] {
+  background: #f5f5f5;
+  border-color: var(--borde);
+  color: var(--texto-suave);
+  cursor: not-allowed;
+}
+
+/* Botones Fijar / Borrar dentro de la fila */
+.btn-fijar, .btn-borrar {
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radio);
+  border: 1.5px solid var(--borde);
+  background: var(--blanco);
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: var(--fuente);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-fijar  { color: #1e8449; border-color: #a9dfbf; }
+.btn-fijar:hover  { background: #eafaf1; }
+.btn-borrar { color: #c0392b; border-color: #f5b7b1; }
+.btn-borrar:hover { background: #fdedec; }
+
+/* =============================================
+   INDEX — Página principal
+   ============================================= */
+
+/* Header extendido con nav completo */
+.site-header .nav-principal { display: flex; gap: 1.5rem; align-items: center; }
+.site-header .nav-principal a { color: var(--texto-suave); font-size: 0.9rem; }
+.site-header .nav-principal a:hover,
+.site-header .nav-principal a.activo { color: var(--rojo); font-weight: 600; text-decoration: none; }
+
+/* Botón Mi perfil con dropdown */
+.perfil-menu { position: relative; }
+.btn-perfil {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.9rem; font-family: var(--fuente); color: var(--texto);
+  padding: 0.3rem 0.5rem; border-radius: var(--radio);
+}
+.btn-perfil:hover { background: #f0f0f0; }
+.btn-perfil svg { width: 18px; height: 18px; }
+
+.dropdown {
+  display: none; position: absolute; right: 0; top: calc(100% + 6px);
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); box-shadow: var(--sombra);
+  min-width: 180px; z-index: 50;
+}
+.dropdown.abierto { display: block; }
+.dropdown a {
+  display: block; padding: 0.65rem 1rem;
+  font-size: 0.88rem; color: var(--texto);
+}
+.dropdown a:hover { background: #f7f7f7; text-decoration: none; color: var(--rojo); }
+
+/* Hero */
+.hero {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  padding: 2rem;
+}
+.hero .eyebrow { margin-bottom: 0.3rem; }
+.hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 1.25rem; }
+
+/* Buscador */
+.buscador {
+  display: flex; gap: 0.75rem; align-items: center;
+  flex-wrap: wrap;
+}
+.buscador-input {
+  flex: 1; min-width: 200px;
+  display: flex; align-items: center; gap: 0.5rem;
+  border: 1.5px solid var(--borde); border-radius: var(--radio);
+  padding: 0.6rem 0.85rem; background: var(--blanco);
+}
+.buscador-input:focus-within { border-color: var(--rojo); }
+.buscador-input svg { color: var(--texto-suave); flex-shrink: 0; width:16px; height:16px; }
+.buscador-input input { border: none; outline: none; font-size: 0.92rem; font-family: var(--fuente); width: 100%; }
+
+.buscador-ubicacion {
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid var(--borde); border-radius: var(--radio);
+  font-size: 0.92rem; font-family: var(--fuente);
+  background: var(--blanco); color: var(--texto); min-width: 160px;
+}
+.buscador-ubicacion:focus { outline: none; border-color: var(--rojo); }
+
+.btn-buscar {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--rojo); color: var(--blanco);
+  border: none; border-radius: var(--radio);
+  font-size: 0.92rem; font-family: var(--fuente); cursor: pointer;
+}
+.btn-buscar:hover { background: var(--rojo-hover); }
+
+/* Layout principal: sidebar + contenido */
+.layout-principal {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Sidebar de filtros ── */
+.sidebar {
+  align-self: start;
+  position: sticky; top: 1rem;
+}
+.sidebar-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.sidebar-header span { font-weight: 600; font-size: 0.95rem; }
+.btn-limpiar {
+  background: none; border: none; color: var(--rojo);
+  font-size: 0.82rem; cursor: pointer; font-family: var(--fuente);
+}
+.btn-limpiar:hover { text-decoration: underline; }
+
+.filtro-grupo { margin-bottom: 1.25rem; }
+.filtro-grupo label:first-child {
+  display: block; font-size: 0.82rem; font-weight: 600;
+  color: var(--texto); margin-bottom: 0.5rem;
+}
+.filtro-grupo select {
+  width: 100%; padding: 0.5rem 0.6rem;
+  border: 1.5px solid var(--borde); border-radius: var(--radio);
+  font-size: 0.85rem; font-family: var(--fuente); background: var(--blanco);
+}
+.filtro-grupo select:focus { outline: none; border-color: var(--rojo); }
+
+/* Checkboxes de filtro */
+.check-lista { display: flex; flex-direction: column; gap: 0.4rem; }
+.check-lista label {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; cursor: pointer; font-weight: normal;
+}
+.check-lista input[type="checkbox"] { accent-color: var(--rojo); width: 14px; height: 14px; }
+
+.btn-aplicar {
+  width: 100%; padding: 0.6rem;
+  background: var(--rojo); color: var(--blanco);
+  border: none; border-radius: var(--radio);
+  font-size: 0.88rem; font-family: var(--fuente); cursor: pointer;
+  margin-top: 0.5rem;
+}
+.btn-aplicar:hover { background: var(--rojo-hover); }
+
+/* ── Zona de ofertas ── */
+.zona-ofertas { min-width: 0; } /* evita desbordamiento en grid */
+
+/* Sección recomendadas */
+.seccion-ofertas { margin-bottom: 2rem; }
+.seccion-ofertas-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.25rem;
+}
+.seccion-ofertas-header h2 { font-size: 1rem; font-weight: 600; }
+.seccion-ofertas-header a  { font-size: 0.82rem; color: var(--rojo); }
+
+.aviso-perfil {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: #fff8e1; border: 1px solid #ffe082;
+  border-radius: var(--radio); padding: 0.6rem 0.85rem;
+  font-size: 0.82rem; color: #7a6000; margin-bottom: 0.85rem;
+}
+.aviso-perfil a { color: var(--rojo); font-weight: 500; }
+
+/* Grid 2 columnas para tarjetas recomendadas */
+.grid-recomendadas {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;
+}
+
+/* Tarjeta de oferta (recomendada) */
+.tarjeta-oferta {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.tarjeta-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.tarjeta-avatar {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: var(--rojo); color: var(--blanco);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+}
+.tarjeta-titulo-wrap { flex: 1; padding: 0 0.5rem; }
+.tarjeta-titulo { font-size: 0.92rem; font-weight: 600; line-height: 1.3; }
+.tarjeta-empresa { font-size: 0.8rem; color: var(--texto-suave); }
+.btn-guardar {
+  background: none; border: none; cursor: pointer;
+  color: var(--texto-suave); padding: 0; flex-shrink: 0;
+}
+.btn-guardar:hover { color: var(--rojo); }
+.btn-guardar svg { width: 18px; height: 18px; }
+
+.tarjeta-meta {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+  font-size: 0.78rem; color: var(--texto-suave);
+}
+.tarjeta-meta span { display: flex; align-items: center; gap: 0.2rem; }
+
+.tarjeta-desc { font-size: 0.8rem; color: var(--texto-suave); }
+
+.tarjeta-etiquetas { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.etiqueta {
+  background: #fdecea; color: var(--rojo);
+  font-size: 0.72rem; padding: 0.2rem 0.55rem;
+  border-radius: 20px; font-weight: 500;
+}
+
+.tarjeta-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 0.25rem;
+}
+.tarjeta-salario { font-size: 0.85rem; font-weight: 600; }
+.tarjeta-salario small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--texto-suave); }
+.btn-ver {
+  padding: 0.4rem 0.85rem;
+  background: var(--rojo); color: var(--blanco);
+  border: none; border-radius: var(--radio);
+  font-size: 0.8rem; font-family: var(--fuente); cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+}
+.btn-ver:hover { background: var(--rojo-hover); color: var(--blanco); text-decoration: none; }
+
+/* Lista de ofertas (explora más) */
+.lista-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.75rem;
+}
+.lista-header h2 { font-size: 1rem; font-weight: 600; }
+.lista-header select {
+  font-size: 0.82rem; padding: 0.3rem 0.5rem;
+  border: 1px solid var(--borde); border-radius: var(--radio);
+  font-family: var(--fuente); background: var(--blanco);
+}
+
+/* Ítem de oferta en lista */
+.oferta-item {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1rem;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 1rem; margin-bottom: 0.65rem;
+}
+.oferta-item-left { display: flex; gap: 0.75rem; flex: 1; min-width: 0; }
+.oferta-item-info { flex: 1; min-width: 0; }
+.oferta-item-titulo { font-size: 0.92rem; font-weight: 600; }
+.oferta-item-empresa { font-size: 0.8rem; color: var(--texto-suave); margin-bottom: 0.3rem; }
+.oferta-item-meta { font-size: 0.78rem; color: var(--texto-suave); display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.oferta-item-desc { font-size: 0.8rem; color: var(--texto-suave); margin-top: 0.3rem; }
+
+.oferta-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+.oferta-item-dias { font-size: 0.75rem; color: var(--texto-suave); }
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center; padding: 2rem;
+  color: var(--texto-suave); font-size: 0.9rem;
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+@media (max-width: 768px) {
+  .layout-principal { grid-template-columns: 1fr; padding: 1rem; }
+  .sidebar { position: static; }
+  .grid-recomendadas { grid-template-columns: 1fr; }
+  .hero { padding: 1.25rem 1rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .oferta-item { flex-direction: column; }
+  .oferta-item-right { align-items: flex-start; }
+}
+
+/* =============================================
+   PERFIL — Estilos específicos
+   ============================================= */
+
+.perfil-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Tarjeta de avatar ── */
+.perfil-avatar-card {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.avatar-circulo {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--rojo);
+  color: var(--blanco);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 700;
+  position: relative;
+}
+.avatar-badge {
+  position: absolute; bottom: 0; right: 0;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #27ae60; border: 2px solid var(--blanco);
+}
+.perfil-nombre { font-size: 1.1rem; font-weight: 700; }
+.perfil-carrera { font-size: 0.82rem; color: var(--rojo); }
+
+/* ── Sección de datos dentro del perfil ── */
+.perfil-seccion {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.perfil-seccion-titulo {
+  font-size: 0.95rem; font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Fila de dato editable: label + valor + botón Editar */
+.dato-fila {
+  margin-bottom: 0.85rem;
+}
+.dato-label {
+  font-size: 0.78rem; color: var(--texto-suave);
+  margin-bottom: 0.2rem;
+}
+.dato-valor-wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+}
+.dato-valor {
+  font-size: 0.9rem; color: var(--texto);
+}
+.btn-editar-dato {
+  background: none; border: none;
+  color: var(--rojo); font-size: 0.82rem;
+  cursor: pointer; font-family: var(--fuente);
+  flex-shrink: 0;
+}
+.btn-editar-dato:hover { text-decoration: underline; }
+
+/* Input inline de edición de dato */
+.dato-edit-wrap {
+  display: none; /* JS lo muestra */
+  flex-direction: column; gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+.dato-edit-wrap.visible { display: flex; }
+.dato-edit-wrap input {
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--rojo);
+  border-radius: var(--radio);
+  font-size: 0.9rem; font-family: var(--fuente);
+}
+.dato-edit-wrap input:focus { outline: none; }
+.dato-edit-wrap .error-msg { font-size: 0.78rem; color: #c0392b; display: none; }
+.dato-edit-wrap.error input { border-color: #c0392b; }
+.dato-edit-wrap.error .error-msg { display: block; }
+.dato-edit-acciones { display: flex; gap: 0.5rem; }
+.btn-guardar-dato {
+  padding: 0.35rem 0.75rem; background: var(--rojo); color: var(--blanco);
+  border: none; border-radius: var(--radio); font-size: 0.82rem;
+  font-family: var(--fuente); cursor: pointer;
+}
+.btn-guardar-dato:hover { background: var(--rojo-hover); }
+.btn-cancelar-dato {
+  padding: 0.35rem 0.75rem; background: none;
+  border: 1.5px solid var(--borde); border-radius: var(--radio);
+  font-size: 0.82rem; font-family: var(--fuente); cursor: pointer; color: var(--texto-suave);
+}
+.btn-cancelar-dato:hover { border-color: var(--texto-suave); }
+
+/* ── Notificaciones ── */
+.notif-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.85rem;
+}
+.notif-titulo { font-size: 0.95rem; font-weight: 600; }
+.notif-badge {
+  background: var(--rojo); color: var(--blanco);
+  font-size: 0.7rem; padding: 0.15rem 0.45rem;
+  border-radius: 20px; font-weight: 600;
+}
+.btn-marcar-leidas {
+  background: none; border: none; color: var(--rojo);
+  font-size: 0.78rem; cursor: pointer; font-family: var(--fuente);
+}
+.btn-marcar-leidas:hover { text-decoration: underline; }
+
+.notif-item {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--borde);
+  transition: opacity 0.3s;
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-item.leida { opacity: 0.4; } /* JS agrega esta clase al marcar como leída */
+
+.notif-icono {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: #fdecea; color: var(--rojo);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 0.9rem;
+}
+.notif-info { flex: 1; }
+.notif-texto { font-size: 0.85rem; font-weight: 500; line-height: 1.3; }
+.notif-subtexto { font-size: 0.78rem; color: var(--texto-suave); margin-top: 0.15rem; }
+.notif-tiempo { font-size: 0.75rem; color: var(--texto-suave); flex-shrink: 0; }
+
+/* ── Gestión de CV ── */
+.cv-zona-upload {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.75rem; padding: 1.5rem;
+  border: 2px dashed var(--borde); border-radius: var(--radio);
+  text-align: center; margin-bottom: 0.75rem;
+}
+.cv-zona-upload svg { color: var(--texto-suave); width: 32px; height: 32px; }
+.cv-zona-texto { font-size: 0.85rem; color: var(--texto-suave); }
+.btn-seleccionar {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--rojo); color: var(--blanco);
+  border: none; border-radius: var(--radio);
+  font-size: 0.88rem; font-family: var(--fuente); cursor: pointer;
+}
+.btn-seleccionar:hover { background: var(--rojo-hover); }
+.cv-formatos { font-size: 0.75rem; color: var(--texto-suave); }
+.cv-archivo-nombre {
+  font-size: 0.85rem; color: #1e8449;
+  font-weight: 500; display: none; /* JS lo muestra al seleccionar archivo */
+}
+.cv-archivo-nombre.visible { display: block; }
+
+@media (max-width: 768px) {
+  .perfil-layout { grid-template-columns: 1fr; padding: 1rem; }
+}
+
+/* =============================================
+   OFERTA DETALLADA
+   ============================================= */
+.oferta-det-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+.breadcrumb {
+  font-size: 0.82rem; color: var(--texto-suave);
+  margin-bottom: 1rem;
+}
+.breadcrumb a { color: var(--rojo); }
+
+/* Encabezado de la oferta */
+.oferta-det-header {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.oferta-det-top {
+  display: flex; gap: 1rem; align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.oferta-det-avatar {
+  width: 56px; height: 56px; border-radius: 10px;
+  background: var(--rojo); color: var(--blanco);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
+}
+.oferta-det-titulo { font-size: 1.4rem; font-weight: 700; line-height: 1.2; }
+.oferta-det-empresa { font-size: 0.9rem; color: var(--texto-suave); margin-top: 0.2rem; }
+.oferta-det-meta {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  font-size: 0.88rem; color: var(--texto-suave);
+  padding-top: 0.75rem; border-top: 1px solid var(--borde);
+}
+.oferta-det-meta span { display: flex; align-items: center; gap: 0.3rem; }
+.oferta-det-salario {
+  font-size: 1.1rem; font-weight: 700; color: var(--texto);
+  margin-top: 0.75rem;
+}
+.oferta-det-salario small {
+  font-size: 0.78rem; font-weight: 400; color: var(--texto-suave);
+}
+
+/* Bloques de contenido */
+.oferta-bloque {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.oferta-bloque h2 {
+  font-size: 0.95rem; font-weight: 600;
+  margin-bottom: 0.75rem; color: var(--texto);
+}
+.oferta-bloque ul {
+  padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem;
+}
+.oferta-bloque ul li { font-size: 0.88rem; color: var(--texto); line-height: 1.5; }
+.oferta-bloque p { font-size: 0.88rem; color: var(--texto); line-height: 1.6; }
+
+/* Chip de capacitación */
+.chip-capacita {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: #eafaf1; color: #1e8449;
+  border: 1px solid #a9dfbf; border-radius: 20px;
+  font-size: 0.82rem; padding: 0.3rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Vista trabajos anteriores */
+.vista-previa-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem; border: 1.5px dashed var(--borde);
+  border-radius: var(--radio); cursor: pointer;
+  transition: border-color 0.15s;
+  background: none; width: 100%; font-family: var(--fuente);
+  text-align: left;
+}
+.vista-previa-link:hover { border-color: var(--rojo); }
+.vista-previa-icono {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: #f5f5f5; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 1.3rem;
+}
+.vista-previa-texto strong { font-size: 0.88rem; display: block; }
+.vista-previa-texto span { font-size: 0.78rem; color: var(--texto-suave); }
+
+/* Sidebar derecha */
+.oferta-det-sidebar { align-self: start; position: sticky; top: 1rem; }
+.sidebar-accion {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.25rem;
+  margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+}
+.sidebar-accion .btn { width: 100%; justify-content: center; }
+.sidebar-etiquetas { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sidebar-info-item {
+  display: flex; justify-content: space-between;
+  font-size: 0.83rem; padding: 0.4rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+.sidebar-info-item:last-child { border-bottom: none; }
+.sidebar-info-item span:first-child { color: var(--texto-suave); }
+.sidebar-info-item span:last-child  { font-weight: 500; }
+
+/* Modal de vista de ejemplo */
+.modal-vista .modal { max-width: 480px; text-align: center; }
+.modal-vista-logo {
+  width: 72px; height: 72px; border-radius: 12px;
+  background: #f0f0f0; display: flex; align-items: center;
+  justify-content: center; font-size: 2rem;
+  margin: 0 auto 1rem;
+}
+.modal-vista p { font-size: 0.88rem; color: var(--texto-suave); margin-bottom: 1.25rem; }
+
+@media (max-width: 768px) {
+  .oferta-det-layout { grid-template-columns: 1fr; padding: 1rem; }
+  .oferta-det-sidebar { position: static; }
+}
