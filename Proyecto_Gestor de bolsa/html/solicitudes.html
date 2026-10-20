@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Solicitudes — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+ <header class="site-header">
+  <div class="logo">
+    <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+  </div>
+  <nav class="nav-principal">
+    <a href="index.html">Buscar ofertas</a>
+    <a href="solicitudes.html" class="activo">Mis postulaciones</a>
+
+    <!-- Menú Mi perfil con dropdown -->
+    <div class="perfil-menu">
+      <button class="btn-perfil" onclick="toggleDropdown()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        Mi perfil
+      </button>
+      <div class="dropdown" id="dropdown-perfil">
+        <a href="perfil.html">Datos Personales</a>
+        <a href="#">Configuración de Cuenta</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="page-content" style="max-width: 1100px;">
+    <p class="eyebrow">BOLSA DE EMPLEO · ULEAM</p>
+    <h1 class="page-title">Mis Solicitudes</h1>
+
+    <div class="layout-principal" style="padding: 1rem 0;">
+
+      <!-- ── SIDEBAR IZQUIERDA: ESTADO DE SOLICITUDES Y LEYENDA ── -->
+      <aside class="sidebar">
+        <!-- Tarjeta de filtros de estado -->
+        <div class="seccion" style="padding: 1.25rem;">
+          <h2 class="seccion-titulo" style="font-size: 0.95rem; margin-bottom: 1rem;">Estado de solicitudes</h2>
+          
+          <div class="check-lista" style="gap: 0.5rem;">
+            <button class="btn-filtro-estado activo" data-estado="todos" onclick="filtrarPorEstado('todos', this)">
+              <span>Todas las solicitudes</span>
+              <span class="badge-conteo" id="conteo-todos">3</span>
+            </button>
+            <button class="btn-filtro-estado" data-estado="Enviada" onclick="filtrarPorEstado('Enviada', this)">
+              <span>Enviada</span>
+              <span class="badge-conteo" id="conteo-enviada">1</span>
+            </button>
+            <button class="btn-filtro-estado" data-estado="En revisión" onclick="filtrarPorEstado('En revisión', this)">
+              <span>En revisión</span>
+              <span class="badge-conteo" id="conteo-revision">1</span>
+            </button>
+            <button class="btn-filtro-estado" data-estado="Aceptada" onclick="filtrarPorEstado('Aceptada', this)">
+              <span>Aceptada</span>
+              <span class="badge-conteo" id="conteo-aceptada">1</span>
+            </button>
+          </div>
+
+          <p class="formacion-nota" style="margin-top: 1rem;">Resumen de las solicitudes de ejemplo.</p>
+        </div>
+
+        <!-- Tarjeta explicativa: ¿Qué significa cada estado? -->
+        <div class="seccion" style="padding: 1.25rem;">
+          <h2 class="seccion-titulo" style="font-size: 0.9rem; margin-bottom: 0.85rem;">¿Qué significa cada estado?</h2>
+          
+          <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.8rem;">
+            <div>
+              <div style="font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
+                <span>🚀</span> Enviada
+              </div>
+              <div style="color: var(--texto-suave); font-size: 0.75rem;">La empresa ha recibido la solicitud.</div>
+            </div>
+            <div>
+              <div style="font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
+                <span>🕒</span> En revisión
+              </div>
+              <div style="color: var(--texto-suave); font-size: 0.75rem;">El perfil está en evaluación.</div>
+            </div>
+            <div>
+              <div style="font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
+                <span>✅</span> Aceptada
+              </div>
+              <div style="color: var(--texto-suave); font-size: 0.75rem;">Continúas en el proceso; no implica una contratación.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enlace de ayuda -->
+        <div style="padding: 0 0.5rem; font-size: 0.82rem;">
+          <div style="font-weight: 600; margin-bottom: 0.2rem;">¿Necesitas ayuda?</div>
+          <p style="color: var(--texto-suave); font-size: 0.78rem; margin-bottom: 0.5rem;">
+            Te orientamos en el seguimiento de tus postulaciones.
+          </p>
+          <a href="#" style="color: var(--rojo); font-weight: 600; font-size: 0.82rem;">Contactar a soporte →</a>
+        </div>
+      </aside>
+
+      <!-- ── COLUMNA DERECHA: LISTADO DE SOLICITUDES ── -->
+      <div class="zona-ofertas">
+        <!-- Encabezado con buscador rápido y filtro -->
+        <div class="lista-header" style="margin-bottom: 1.25rem; align-items: flex-start;">
+          <div>
+            <h2 style="font-size: 1.2rem; font-weight: 700;">Todas las solicitudes</h2>
+            <span style="font-size: 0.82rem; color: var(--texto-suave);" id="subtitulo-conteo">3 solicitudes de ejemplo</span>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <div class="buscador-input" style="padding: 0.45rem 0.75rem; min-width: 220px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;">
+                <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+              </svg>
+              <input type="text" id="buscar-solicitud" placeholder="Buscar por cargo o empresa" oninput="filtrarSolicitudes()" style="font-size: 0.85rem;">
+            </div>
+
+            <select id="ordenar-solicitudes" onchange="filtrarSolicitudes()" style="font-size: 0.82rem; padding: 0.45rem 0.6rem; border: 1.5px solid var(--borde); border-radius: var(--radio); background: var(--blanco);">
+              <option value="reciente">Más recientes</option>
+              <option value="antiguo">Más antiguas</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Contenedor donde se renderizan las tarjetas de solicitudes -->
+        <div id="contenedor-solicitudes" style="display: flex; flex-direction: column; gap: 1.25rem;"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../js/datos.js"></script>
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/solicitudes.js"></script>
+</body>
+</html>

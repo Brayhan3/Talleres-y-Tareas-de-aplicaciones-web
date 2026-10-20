@@ -889,128 +889,238 @@ img { max-width: 100%; display: block; }
   .perfil-layout { grid-template-columns: 1fr; padding: 1rem; }
 }
 
+
 /* =============================================
-   OFERTA DETALLADA
+   OFERTA DETALLADA — reescritura completa
    ============================================= */
 .oferta-det-layout {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 1.5rem;
-  padding: 1.5rem 2rem;
-  max-width: 1100px;
+  grid-template-columns: 1fr 220px;
+  gap: 1.25rem;
+  padding: 1.25rem 2rem;
+  max-width: 960px;
   margin: 0 auto;
   width: 100%;
 }
 .breadcrumb {
   font-size: 0.82rem; color: var(--texto-suave);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 .breadcrumb a { color: var(--rojo); }
 
-/* Encabezado de la oferta */
+/* Encabezado compacto */
 .oferta-det-header {
   background: var(--blanco); border: 1px solid var(--borde);
-  border-radius: var(--radio); padding: 1.5rem;
-  margin-bottom: 1rem;
+  border-radius: var(--radio); padding: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 .oferta-det-top {
-  display: flex; gap: 1rem; align-items: flex-start;
-  margin-bottom: 1rem;
-}
-.oferta-det-avatar {
-  width: 56px; height: 56px; border-radius: 10px;
-  background: var(--rojo); color: var(--blanco);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
-}
-.oferta-det-titulo { font-size: 1.4rem; font-weight: 700; line-height: 1.2; }
-.oferta-det-empresa { font-size: 0.9rem; color: var(--texto-suave); margin-top: 0.2rem; }
-.oferta-det-meta {
-  display: flex; flex-wrap: wrap; gap: 1rem;
-  font-size: 0.88rem; color: var(--texto-suave);
-  padding-top: 0.75rem; border-top: 1px solid var(--borde);
-}
-.oferta-det-meta span { display: flex; align-items: center; gap: 0.3rem; }
-.oferta-det-salario {
-  font-size: 1.1rem; font-weight: 700; color: var(--texto);
-  margin-top: 0.75rem;
-}
-.oferta-det-salario small {
-  font-size: 0.78rem; font-weight: 400; color: var(--texto-suave);
-}
-
-/* Bloques de contenido */
-.oferta-bloque {
-  background: var(--blanco); border: 1px solid var(--borde);
-  border-radius: var(--radio); padding: 1.25rem;
-  margin-bottom: 1rem;
-}
-.oferta-bloque h2 {
-  font-size: 0.95rem; font-weight: 600;
-  margin-bottom: 0.75rem; color: var(--texto);
-}
-.oferta-bloque ul {
-  padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem;
-}
-.oferta-bloque ul li { font-size: 0.88rem; color: var(--texto); line-height: 1.5; }
-.oferta-bloque p { font-size: 0.88rem; color: var(--texto); line-height: 1.6; }
-
-/* Chip de capacitación */
-.chip-capacita {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background: #eafaf1; color: #1e8449;
-  border: 1px solid #a9dfbf; border-radius: 20px;
-  font-size: 0.82rem; padding: 0.3rem 0.75rem;
+  display: flex; gap: 0.85rem; align-items: flex-start;
   margin-bottom: 0.75rem;
 }
+.oferta-det-avatar {
+  width: 48px; height: 48px; border-radius: 8px;
+  background: var(--rojo); color: var(--blanco);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; flex-shrink: 0;
+}
+.oferta-det-titulo  { font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+.oferta-det-empresa { font-size: 0.85rem; color: var(--texto-suave); margin-top: 0.15rem; }
+.oferta-det-meta {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  font-size: 0.82rem; color: var(--texto-suave);
+  margin-bottom: 0.5rem;
+}
+.oferta-det-salario {
+  font-size: 1rem; font-weight: 700;
+  display: flex; align-items: baseline; gap: 0.4rem;
+}
+.oferta-det-salario small { font-size: 0.78rem; font-weight: 400; color: var(--texto-suave); }
 
-/* Vista trabajos anteriores */
+/* Bloques de contenido — sin borde, fondo blanco suave */
+.oferta-bloque {
+  background: var(--blanco); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 1.1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.oferta-bloque h2 {
+  font-size: 0.92rem; font-weight: 600; margin-bottom: 0.6rem;
+}
+.oferta-bloque-desc {
+  font-size: 0.8rem; color: var(--texto-suave); margin-bottom: 0.6rem;
+}
+.oferta-bloque ul {
+  padding-left: 1rem; display: flex; flex-direction: column; gap: 0.35rem;
+  list-style: disc;
+}
+.oferta-bloque ul li { font-size: 0.85rem; line-height: 1.5; }
+
+/* Aviso de capacitación no especificada */
+.aviso-info {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: #f9f9f9; border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 0.6rem 0.85rem;
+  font-size: 0.82rem; color: var(--texto-suave);
+}
+
+/* Link de vista de trabajos anteriores */
 .vista-previa-link {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.85rem; border: 1.5px dashed var(--borde);
-  border-radius: var(--radio); cursor: pointer;
-  transition: border-color 0.15s;
-  background: none; width: 100%; font-family: var(--fuente);
-  text-align: left;
+  display: flex; align-items: center; gap: 0.6rem;
+  width: 100%; padding: 0.65rem 0.85rem;
+  background: #fdecea; border: none; border-radius: var(--radio);
+  color: var(--rojo); font-size: 0.85rem; font-weight: 500;
+  font-family: var(--fuente); cursor: pointer; margin-top: 0.65rem;
+  text-align: left; transition: background 0.15s;
 }
-.vista-previa-link:hover { border-color: var(--rojo); }
-.vista-previa-icono {
-  width: 44px; height: 44px; border-radius: 8px;
-  background: #f5f5f5; display: flex; align-items: center;
-  justify-content: center; flex-shrink: 0; font-size: 1.3rem;
-}
-.vista-previa-texto strong { font-size: 0.88rem; display: block; }
-.vista-previa-texto span { font-size: 0.78rem; color: var(--texto-suave); }
+.vista-previa-link:hover { background: #f5d0cc; }
 
-/* Sidebar derecha */
+/* Sidebar */
 .oferta-det-sidebar { align-self: start; position: sticky; top: 1rem; }
 .sidebar-accion {
   background: var(--blanco); border: 1px solid var(--borde);
-  border-radius: var(--radio); padding: 1.25rem;
-  margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+  border-radius: var(--radio); padding: 1rem;
+  margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 0.6rem;
 }
-.sidebar-accion .btn { width: 100%; justify-content: center; }
+.sidebar-accion .btn { width: 100%; justify-content: center; font-size: 0.88rem; }
 .sidebar-etiquetas { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.sidebar-info-item {
+
+/* Tabla resumen */
+.resumen-tabla { font-size: 0.82rem; }
+.resumen-fila {
   display: flex; justify-content: space-between;
-  font-size: 0.83rem; padding: 0.4rem 0;
-  border-bottom: 1px solid var(--borde);
+  padding: 0.45rem 0; border-bottom: 1px solid var(--borde);
 }
-.sidebar-info-item:last-child { border-bottom: none; }
-.sidebar-info-item span:first-child { color: var(--texto-suave); }
-.sidebar-info-item span:last-child  { font-weight: 500; }
+.resumen-fila:last-child { border-bottom: none; }
+.resumen-fila span:first-child { color: var(--texto-suave); }
+.resumen-fila span:last-child  { font-weight: 500; text-align: right; }
 
-/* Modal de vista de ejemplo */
-.modal-vista .modal { max-width: 480px; text-align: center; }
-.modal-vista-logo {
-  width: 72px; height: 72px; border-radius: 12px;
+/* Modal vista de ejemplo */
+.modal-vista-icono {
+  width: 64px; height: 64px; border-radius: 50%;
   background: #f0f0f0; display: flex; align-items: center;
-  justify-content: center; font-size: 2rem;
-  margin: 0 auto 1rem;
+  justify-content: center; font-size: 1.6rem;
+  margin: 0 auto 0.85rem;
 }
-.modal-vista p { font-size: 0.88rem; color: var(--texto-suave); margin-bottom: 1.25rem; }
+.modal-vista-nota {
+  font-size: 0.75rem; color: var(--texto-suave);
+  margin-top: 0.85rem; font-style: italic;
+}
+.btn-vista-ejemplo {
+  display: inline-block; padding: 0.5rem 1.25rem;
+  border: 1.5px solid var(--borde); border-radius: var(--radio);
+  font-size: 0.85rem; font-family: var(--fuente);
+  cursor: pointer; background: var(--blanco); color: var(--texto);
+  margin-bottom: 0.5rem;
+}
+.btn-vista-ejemplo:hover { border-color: var(--rojo); color: var(--rojo); }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .oferta-det-layout { grid-template-columns: 1fr; padding: 1rem; }
   .oferta-det-sidebar { position: static; }
+}
+
+/* =============================================
+   MIS SOLICITUDES — Estilos específicos
+   ============================================= */
+
+/* Botones de filtro de estado lateral */
+.btn-filtro-estado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radio);
+  font-size: 0.88rem;
+  font-family: var(--fuente);
+  color: var(--texto);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.btn-filtro-estado:hover {
+  background: #f5f5f5;
+}
+
+.btn-filtro-estado.activo {
+  background: #fdecea;
+  color: var(--rojo);
+  font-weight: 600;
+}
+
+/* Badge con conteo */
+.badge-conteo {
+  font-size: 0.78rem;
+  background: #eee;
+  color: var(--texto-suave);
+  padding: 0.1rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.btn-filtro-estado.activo .badge-conteo {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+/* Badges de estado en las tarjetas */
+.badge-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-enviada {
+  background: #e8f4fd;
+  color: #1d6fce;
+}
+
+.badge-revision {
+  background: #fff8e1;
+  color: #b78103;
+}
+
+.badge-aceptada {
+  background: #eafaf1;
+  color: #1e8449;
+}
+
+/* Grid de resumen (Por aprender, Por usar, Por aplicar) */
+.grid-resumen-solicitud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.bloque-solicitud-info {
+  background: #f9f9f9;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bloque-solicitud-info strong {
+  font-size: 0.8rem;
+  color: var(--rojo);
+}
+
+.bloque-solicitud-info span {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .grid-resumen-solicitud {
+    grid-template-columns: 1fr;
+  }
 }

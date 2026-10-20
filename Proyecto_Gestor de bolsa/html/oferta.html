@@ -32,155 +32,106 @@
     </nav>
   </header>
 
-  <!-- BUSCADOR (mini, igual al hero del index) -->
-  <section class="hero" style="padding:1rem 2rem;">
-    <p class="eyebrow" style="margin-bottom:0.5rem;">Bolsa de Empleo · ULEAM</p>
-    <div class="buscador">
-      <div class="buscador-input">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
-          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
-        </svg>
-        <input type="text" placeholder="Busca por palabra clave, cargo o empresa">
-      </div>
-      <select class="buscador-ubicacion">
-        <option>Todas las ubicaciones</option>
-        <option>Manta</option>
-        <option>Portoviejo</option>
-        <option>Ecuador (Remoto)</option>
-      </select>
-      <button class="btn-buscar" onclick="window.location.href='index.html'">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
-          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
-        </svg>
-        Buscar ofertas
-      </button>
-    </div>
-  </section>
-
-  <!-- CONTENIDO PRINCIPAL -->
+  <!-- CONTENIDO -->
   <div class="oferta-det-layout">
 
     <!-- ══ COLUMNA PRINCIPAL ══ -->
     <div>
-      <!-- Migas de pan -->
       <p class="breadcrumb">
-        <a href="index.html">Ofertas</a> › <span id="bread-titulo">Coordinador/a de proyectos</span>
+        <a href="index.html">Ofertas</a> › <span id="bread-titulo">Cargando...</span>
       </p>
 
-      <!-- Encabezado de la oferta -->
+      <!-- Encabezado -->
       <div class="oferta-det-header">
         <div class="oferta-det-top">
-          <div class="oferta-det-avatar" id="det-iniciales">CH</div>
-          <div>
-            <div class="oferta-det-titulo" id="det-titulo">Coordinador/a de proyectos</div>
-            <div class="oferta-det-empresa" id="det-empresa">Consultora Horizonte</div>
+          <div class="oferta-det-avatar" id="det-iniciales"></div>
+          <div style="flex:1;">
+            <div class="oferta-det-titulo" id="det-titulo"></div>
+            <div class="oferta-det-empresa" id="det-empresa"></div>
           </div>
-          <!-- Guardar oferta (visual) -->
-          <button class="btn-guardar" style="margin-left:auto;" title="Guardar oferta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px;">
+          <button class="btn-guardar" title="Guardar oferta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:20px;height:20px;">
               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
             </svg>
           </button>
         </div>
-
-        <!-- Meta: ubicación, modalidad, jornada -->
         <div class="oferta-det-meta">
-          <span>📍 <span id="det-ubicacion">Manta</span></span>
-          <span>🏢 <span id="det-modalidad">Híbrida</span></span>
-          <span>⏱ <span id="det-jornada">Tiempo completo</span></span>
-          <span>🎓 <span id="det-experiencia">1 a 3 años</span></span>
+          <span id="det-ubicacion"></span>
+          <span id="det-modalidad"></span>
+          <span id="det-jornada"></span>
         </div>
-
         <div class="oferta-det-salario">
-          <span id="det-salario">USD 1.200–1.500 / mes</span>
+          <span id="det-salario"></span>
           <small>Sueldo aproximado</small>
         </div>
       </div>
 
-      <!-- Bloque 1: Descripción del puesto -->
+      <!-- Lo que se espera del trabajo -->
       <div class="oferta-bloque">
-        <h2>¿Qué harás en este puesto?</h2>
-        <p id="det-descripcion">
-          Serás responsable de planificar, ejecutar y supervisar proyectos dentro de la organización,
-          asegurando que se cumplan los plazos, presupuestos y objetivos establecidos.
-          Coordinarás equipos multidisciplinarios y serás el punto de contacto entre las áreas internas
-          y los clientes.
-        </p>
-      </div>
-
-      <!-- Bloque 2: Requisitos -->
-      <div class="oferta-bloque">
-        <h2>¿Qué necesitas saber?</h2>
-        <ul id="det-requisitos">
-          <li>Título en Administración de Empresas o carrera afín</li>
-          <li>Maestría en Gestión de Proyectos (valorada)</li>
-          <li>Manejo de metodologías ágiles (Scrum, Kanban)</li>
-          <li>Habilidades de comunicación y liderazgo de equipos</li>
-          <li>Inglés intermedio (lectura técnica)</li>
+        <h2>Lo que se espera del trabajo</h2>
+        <ul>
+          <li>Coordinar proyectos, seguimiento de avance y cierre de entregables.</li>
+          <li>Analizar tiempos, recursos y dependencias para ajustar planes de trabajo.</li>
+          <li>Comunicar avances, riesgos y soluciones a equipos y stakeholders.</li>
         </ul>
       </div>
 
-      <!-- Bloque 3: Capacitación -->
+      <!-- Qué hay que aprender -->
       <div class="oferta-bloque">
-        <h2>Capacitación y crecimiento</h2>
-        <div class="chip-capacita">✓ La empresa capacita desde el inicio</div>
-        <p>
-          La empresa ofrece un programa de inducción de 2 semanas para nuevos colaboradores,
-          acceso a plataformas de formación en línea y revisiones de desempeño cada 6 meses
-          con posibilidad de ascenso interno.
-        </p>
+        <h2>Qué hay que aprender</h2>
+        <p class="oferta-bloque-desc">Herramientas, conceptos y habilidades relevantes para el puesto. Contenido ilustrativo.</p>
+        <ul>
+          <li>Metodologías ágiles, cronogramas y seguimiento de hitos.</li>
+          <li>Herramientas de gestión de proyectos como Asana, Trello o similares.</li>
+          <li>Comunicación asertiva, resolución de conflictos y trabajo en equipo.</li>
+        </ul>
       </div>
 
-      <!-- Bloque 4: Vista trabajos anteriores -->
+      <!-- Capacitación -->
       <div class="oferta-bloque">
-        <h2>Vista de trabajos anteriores</h2>
-        <p style="margin-bottom:0.75rem; color:var(--texto-suave); font-size:0.85rem;">
-          Ejemplo de proyectos o trabajos realizados por el equipo de esta empresa.
-        </p>
-        <!-- Al hacer clic abre el modal de vista de ejemplo -->
+        <h2>Capacitación por parte de la empresa</h2>
+        <div class="aviso-info">
+          ℹ No especificada. La oferta no incluye información sobre planes de capacitación interna.
+        </div>
+      </div>
+
+      <!-- Trabajos anteriores -->
+      <div class="oferta-bloque">
+        <h2>Trabajos anteriores relevantes</h2>
+        <ul>
+          <li>Ejemplo: coordinación de proyectos de consultoría en entornos híbridos.</li>
+          <li>Ejemplo: seguimiento de entregables, reportes semanales y ajustes de plan.</li>
+        </ul>
+        <!-- Botón que abre modal de vista de ejemplo -->
         <button class="vista-previa-link" onclick="abrirModal('modal-vista')">
-          <div class="vista-previa-icono">📷</div>
-          <div class="vista-previa-texto">
-            <strong>Ver muestra de proyectos</strong>
-            <span>Portafolio de ejemplo · Solo vista previa</span>
-          </div>
+          📷 Ver vista de ejemplo de trabajos anteriores →
         </button>
       </div>
     </div>
 
-    <!-- ══ SIDEBAR DERECHA ══ -->
+    <!-- ══ SIDEBAR ══ -->
     <aside class="oferta-det-sidebar">
 
-      <!-- Acciones -->
+      <!-- Botones de acción -->
       <div class="sidebar-accion">
-        <a href="#" class="btn btn-primary" onclick="abrirModal('modal-postular'); return false;">
+        <button class="btn btn-primary" onclick="abrirModal('modal-postular')">
           Postular ahora
-        </a>
-        <button class="btn btn-secondary" onclick="abrirModal('modal-guardar')">
-          Guardar oferta
         </button>
-        <div class="sidebar-etiquetas" id="det-etiquetas">
-          <span class="etiqueta">Título y maestría afines</span>
-        </div>
+        <button class="btn btn-secondary" onclick="abrirModal('modal-guardar')">
+          🔖 Guardar oferta
+        </button>
+        <div class="sidebar-etiquetas" id="det-etiquetas"></div>
       </div>
 
-      <!-- Resumen rápido -->
+      <!-- Resumen -->
       <div class="oferta-bloque">
         <h2>Resumen</h2>
-        <div class="sidebar-info-item">
-          <span>Área</span><span id="det-area">Administración</span>
-        </div>
-        <div class="sidebar-info-item">
-          <span>Modalidad</span><span>Híbrida</span>
-        </div>
-        <div class="sidebar-info-item">
-          <span>Jornada</span><span>Tiempo completo</span>
-        </div>
-        <div class="sidebar-info-item">
-          <span>Experiencia</span><span>1 a 3 años</span>
-        </div>
-        <div class="sidebar-info-item">
-          <span>Publicado</span><span>Hace 2 días</span>
+        <div class="resumen-tabla">
+          <div class="resumen-fila"><span>Área</span><span id="det-area">—</span></div>
+          <div class="resumen-fila"><span>Modalidad</span><span id="res-modalidad">—</span></div>
+          <div class="resumen-fila"><span>Jornada</span><span id="res-jornada">—</span></div>
+          <div class="resumen-fila"><span>Experiencia</span><span id="det-experiencia">—</span></div>
+          <div class="resumen-fila"><span>Publicado</span><span id="det-dias">—</span></div>
         </div>
       </div>
 
@@ -196,26 +147,23 @@
     </div>
   </footer>
 
-  <!-- MODAL: Postular -->
+  <!-- MODAL: Confirmar postulación -->
   <div class="modal-overlay" id="modal-postular" onclick="cerrarSiEsFondo(event,'modal-postular')">
     <div class="modal">
       <button class="modal-cerrar" onclick="cerrarModal('modal-postular')">✕</button>
       <div class="modal-titulo">¿Confirmar postulación?</div>
-      <div class="modal-msg">
-        Estás a punto de postularte a <strong id="modal-nombre-oferta">Coordinador/a de proyectos</strong>.
-        Tu CV y datos de perfil serán enviados a la empresa.
-      </div>
+      <div class="modal-msg">Estás a punto de postularte a <strong id="modal-nombre-oferta"></strong>. Tu CV y datos de perfil serán enviados a la empresa.</div>
       <div class="modal-acciones">
         <button class="btn btn-secondary" onclick="cerrarModal('modal-postular')">Cancelar</button>
-        <button class="btn btn-primary" onclick="confirmarPostulacion()">Confirmar</button>
+        <button class="btn btn-primary"   onclick="confirmarPostulacion()">Confirmar</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL: Aviso éxito postulación -->
+  <!-- MODAL: Éxito postulación -->
   <div class="modal-overlay" id="modal-exito" onclick="cerrarSiEsFondo(event,'modal-exito')">
     <div class="modal" style="text-align:center;">
-      <div style="font-size:2.5rem; margin-bottom:0.75rem;">✅</div>
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">✅</div>
       <div class="modal-titulo">¡Postulación enviada!</div>
       <div class="modal-msg">Tu solicitud fue enviada correctamente. Puedes seguir su estado en <strong>Mis postulaciones</strong>.</div>
       <div class="modal-acciones" style="justify-content:center;">
@@ -228,7 +176,7 @@
   <!-- MODAL: Guardar oferta -->
   <div class="modal-overlay" id="modal-guardar" onclick="cerrarSiEsFondo(event,'modal-guardar')">
     <div class="modal" style="text-align:center;">
-      <div style="font-size:2.5rem; margin-bottom:0.75rem;">🔖</div>
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔖</div>
       <div class="modal-titulo">Oferta guardada</div>
       <div class="modal-msg">Puedes encontrarla en <strong>Mis postulaciones → Guardadas</strong>.</div>
       <div class="modal-acciones" style="justify-content:center;">
@@ -237,19 +185,17 @@
     </div>
   </div>
 
-  <!-- MODAL: Vista de ejemplo (portafolio) -->
-  <div class="modal-overlay modal-vista" id="modal-vista" onclick="cerrarSiEsFondo(event,'modal-vista')">
+  <!-- MODAL: Vista de ejemplo de trabajos anteriores -->
+  <div class="modal-overlay" id="modal-vista" onclick="cerrarSiEsFondo(event,'modal-vista')">
     <div class="modal" style="text-align:center;">
       <button class="modal-cerrar" onclick="cerrarModal('modal-vista')">✕</button>
-      <div class="modal-vista-logo">📷</div>
-      <div class="modal-titulo">Vista de ejemplo</div>
-      <p>
-        Esta sección mostrará el portafolio o proyectos anteriores de la empresa.
-        Contenido de vista previa — funcionalidad completa próximamente.
-      </p>
-      <div class="modal-acciones" style="justify-content:center;">
-        <button class="btn btn-secondary" onclick="cerrarModal('modal-vista')">Cerrar</button>
+      <div class="modal-vista-icono">📷</div>
+      <div class="modal-titulo">Trabajos anteriores</div>
+      <div class="modal-msg">
+        Aquí se mostrará una muestra visual de proyectos y trabajos anteriores relacionados con esta oferta.
       </div>
+      <button class="btn-vista-ejemplo">Vista de ejemplo</button>
+      <p class="modal-vista-nota">Contenido ilustrativo · No son trabajos reales</p>
     </div>
   </div>
 
