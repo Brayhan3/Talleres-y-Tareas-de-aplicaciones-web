@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Empresa ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="dashboard_empresa.html" class="activo">Panel de control</a>
+      <a href="candidatos.html">Candidatos</a>
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="7" width="20" height="15" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+          Empresa
+        </button>
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil_empresa.html">Perfil de empresa</a>
+          <a href="login.html">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <div style="flex:1;">
+    <div class="dashboard-layout">
+
+      <!-- Título + botón publicar -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
+        <div>
+          <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+          <h1 class="page-title" style="margin-bottom:0;">Panel de control</h1>
+          <p style="font-size:0.82rem; color:var(--texto-suave); margin-top:0.25rem;">
+            Consultora Horizonte · Reclutador activo
+          </p>
+        </div>
+        <a href="crear_oferta.html" class="btn-publicar">+ Publicar oferta</a>
+      </div>
+
+      <!-- ── TARJETAS DE RESUMEN ── -->
+      <div class="resumen-grid">
+        <div class="resumen-card">
+          <div class="resumen-card-label">Ofertas activas</div>
+          <div class="resumen-card-valor">3</div>
+          <div class="resumen-card-sub">De 5 publicadas en total</div>
+        </div>
+        <div class="resumen-card">
+          <div class="resumen-card-label">Total postulantes</div>
+          <div class="resumen-card-valor">18</div>
+          <div class="resumen-card-sub">En todas las ofertas</div>
+        </div>
+        <div class="resumen-card">
+          <div class="resumen-card-label">Solicitudes nuevas</div>
+          <div class="resumen-card-valor" style="color:var(--rojo);">4</div>
+          <div class="resumen-card-sub">Sin revisar esta semana</div>
+        </div>
+      </div>
+
+      <!-- ── OFERTAS PUBLICADAS ── -->
+      <div class="dash-seccion">
+        <div class="dash-seccion-header">
+          <h2>Ofertas publicadas</h2>
+          <a href="crear_oferta.html" class="btn-sm-outline">+ Nueva oferta</a>
+        </div>
+
+        <!-- Oferta 1 -->
+        <div class="oferta-dash-fila">
+          <div class="oferta-dash-info">
+            <div class="oferta-dash-titulo">Coordinador/a de proyectos</div>
+            <div class="oferta-dash-meta">
+              <span>📍 Manta</span>
+              <span>🏢 Híbrida</span>
+              <span>👥 7 postulantes</span>
+              <span>Publicada hace 2 días</span>
+            </div>
+          </div>
+          <div class="oferta-dash-acciones">
+            <span class="badge badge-activa">Activa</span>
+            <a href="candidatos.html" class="btn-sm-outline">Ver candidatos</a>
+            <a href="crear_oferta.html" class="btn-sm-outline">Editar</a>
+          </div>
+        </div>
+
+        <!-- Oferta 2 -->
+        <div class="oferta-dash-fila">
+          <div class="oferta-dash-info">
+            <div class="oferta-dash-titulo">Analista de planificación</div>
+            <div class="oferta-dash-meta">
+              <span>📍 Portoviejo</span>
+              <span>🏢 Presencial</span>
+              <span>👥 5 postulantes</span>
+              <span>Publicada hace 3 días</span>
+            </div>
+          </div>
+          <div class="oferta-dash-acciones">
+            <span class="badge badge-activa">Activa</span>
+            <a href="candidatos.html" class="btn-sm-outline">Ver candidatos</a>
+            <a href="crear_oferta.html" class="btn-sm-outline">Editar</a>
+          </div>
+        </div>
+
+        <!-- Oferta 3 -->
+        <div class="oferta-dash-fila">
+          <div class="oferta-dash-info">
+            <div class="oferta-dash-titulo">Asistente administrativo</div>
+            <div class="oferta-dash-meta">
+              <span>📍 Manta</span>
+              <span>🏢 Presencial</span>
+              <span>👥 4 postulantes</span>
+              <span>Publicada hace 5 días</span>
+            </div>
+          </div>
+          <div class="oferta-dash-acciones">
+            <span class="badge badge-activa">Activa</span>
+            <a href="candidatos.html" class="btn-sm-outline">Ver candidatos</a>
+            <a href="crear_oferta.html" class="btn-sm-outline">Editar</a>
+          </div>
+        </div>
+
+        <!-- Oferta 4 -->
+        <div class="oferta-dash-fila">
+          <div class="oferta-dash-info">
+            <div class="oferta-dash-titulo">Desarrollador/a junior</div>
+            <div class="oferta-dash-meta">
+              <span>📍 Ecuador</span>
+              <span>🏢 Remota</span>
+              <span>👥 2 postulantes</span>
+              <span>Publicada hace 10 días</span>
+            </div>
+          </div>
+          <div class="oferta-dash-acciones">
+            <span class="badge badge-cerrada">Cerrada</span>
+            <a href="candidatos.html" class="btn-sm-outline">Ver candidatos</a>
+            <a href="crear_oferta.html" class="btn-sm-outline">Editar</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── POSTULANTES RECIENTES ── -->
+      <div class="dash-seccion">
+        <div class="dash-seccion-header">
+          <h2>Postulantes recientes</h2>
+          <a href="candidatos.html" class="btn-sm-outline">Ver todos</a>
+        </div>
+
+        <div class="postulante-fila">
+          <div class="postulante-avatar">BT</div>
+          <div class="postulante-info">
+            <div class="postulante-nombre">Brayhan Torres</div>
+            <div class="postulante-oferta">Coordinador/a de proyectos</div>
+          </div>
+          <span class="badge badge-revision">En revisión</span>
+          <span class="postulante-tiempo">Hace 1 h</span>
+        </div>
+
+        <div class="postulante-fila">
+          <div class="postulante-avatar">MA</div>
+          <div class="postulante-info">
+            <div class="postulante-nombre">María Alvarado</div>
+            <div class="postulante-oferta">Analista de planificación</div>
+          </div>
+          <span class="badge badge-enviada">Enviada</span>
+          <span class="postulante-tiempo">Hace 3 h</span>
+        </div>
+
+        <div class="postulante-fila">
+          <div class="postulante-avatar">JR</div>
+          <div class="postulante-info">
+            <div class="postulante-nombre">José Reyes</div>
+            <div class="postulante-oferta">Asistente administrativo</div>
+          </div>
+          <span class="badge badge-aceptada">Aceptada</span>
+          <span class="postulante-tiempo">Ayer</span>
+        </div>
+
+        <div class="postulante-fila">
+          <div class="postulante-avatar">LC</div>
+          <div class="postulante-info">
+            <div class="postulante-nombre">Laura Cedeño</div>
+            <div class="postulante-oferta">Coordinador/a de proyectos</div>
+          </div>
+          <span class="badge badge-enviada">Enviada</span>
+          <span class="postulante-tiempo">Ayer</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script>
+    function toggleDropdown() {
+      document.getElementById('dropdown-perfil').classList.toggle('abierto');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.querySelector('.perfil-menu');
+      if (menu && !menu.contains(e.target))
+        document.getElementById('dropdown-perfil').classList.remove('abierto');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Compañía — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav>
+      <a href="landing.html">Bolsa de Empleo ULEAM</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main style="flex:1; padding: 0 1rem;">
+    <div class="reg-empresa-layout">
+
+      <!-- Eyebrow + título -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
+        <div>
+          <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+          <h1 class="page-title" style="margin-bottom:0.25rem;">Registro de Compañía</h1>
+          <p style="font-size:0.83rem; color:var(--texto-suave);">Los campos marcados con * son obligatorios.</p>
+        </div>
+        <span class="reg-empresa-header-right">Cuenta de compañía</span>
+      </div>
+
+      <!-- ── SECCIÓN 1: Datos de la compañía ── -->
+      <div class="reg-empresa-seccion">
+        <h2>Datos de la compañía</h2>
+        <p>Ingresa la información comercial y la ubicación de la compañía a la que perteneces.</p>
+
+        <!-- Nombre comercial + Razón social -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre-comercial">Nombre comercial *</label>
+            <input type="text" id="nombre-comercial" placeholder="Nombre con el que se conoce la compañía">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label for="razon-social">Razón social *</label>
+            <input type="text" id="razon-social" placeholder="Nombre legal registrado en el RUC">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+        </div>
+
+        <!-- RUC + Sector -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ruc">RUC *</label>
+            <input type="text" id="ruc" placeholder="Ingresa los 13 dígitos del RUC" maxlength="13">
+            <span class="error-msg">El RUC debe tener 13 dígitos.</span>
+          </div>
+          <div class="form-group">
+            <label for="sector">Sector o actividad económica *</label>
+            <select id="sector">
+              <option value="">Selecciona el sector de la compañía</option>
+              <option>Tecnología e informática</option>
+              <option>Administración y finanzas</option>
+              <option>Salud y bienestar</option>
+              <option>Educación</option>
+              <option>Construcción e ingeniería</option>
+              <option>Comercio y ventas</option>
+              <option>Manufactura e industria</option>
+              <option>Servicios profesionales</option>
+              <option>Otro</option>
+            </select>
+            <span class="error-msg">Selecciona un sector.</span>
+          </div>
+        </div>
+
+        <!-- Ciudad + Sitio web -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ciudad">Ciudad *</label>
+            <input type="text" id="ciudad" placeholder="Ej.: Manta, Manabí">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label for="sitio-web">Sitio web <span style="font-weight:400; color:var(--texto-suave)">(opcional)</span></label>
+            <input type="url" id="sitio-web" placeholder="https://www.compania.com.ec">
+          </div>
+        </div>
+
+        <!-- Dirección (ancho completo) -->
+        <div class="form-group">
+          <label for="direccion">Dirección *</label>
+          <input type="text" id="direccion" placeholder="Calle principal, número, calle secundaria y sector">
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+      </div>
+
+      <!-- ── SECCIÓN 2: Datos del representante ── -->
+      <div class="reg-empresa-seccion">
+        <h2>Datos del representante</h2>
+
+        <!-- Nombre + Cargo -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rep-nombre">Nombre completo *</label>
+            <input type="text" id="rep-nombre" placeholder="Escribe tus nombres y apellidos">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label for="rep-cargo">Cargo *</label>
+            <input type="text" id="rep-cargo" placeholder="Ej.: Responsable de Talento Humano">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+        </div>
+
+        <!-- Correo + Teléfono -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rep-correo">Correo corporativo *</label>
+            <input type="email" id="rep-correo" placeholder="nombre@compania.com.ec">
+            <span class="error-msg">Ingresa un correo válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="rep-telefono">Teléfono de contacto *</label>
+            <input type="tel" id="rep-telefono" placeholder="Ej.: 0991234567 o 052123456">
+            <span class="error-msg">Ingresa un número válido.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BARRA INFERIOR ── -->
+      <div class="reg-empresa-barra">
+        <button class="btn-volver" onclick="window.location.href='tipo_usuario.html'">← Volver</button>
+        <button class="btn-continuar" onclick="validarRegistroEmpresa()">
+          Guardar y continuar →
+        </button>
+      </div>
+
+            <<!-- BOTÓN TEMPORAL: saltar registro empresa -->
+    <div style="text-align:right; margin-bottom:1rem;">
+    <a href="dashboard_empresa.html" style="font-size:0.78rem; color:var(--texto-suave);">
+        [DEV] Saltar al dashboard →
+    </a>
+    </div>
+
+      <p class="ayuda mt-2">
+        ¿Necesitas ayuda? <a href="#">Contactar a soporte</a>
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/registro_empresa.js"></script>
+</body>
+</html>

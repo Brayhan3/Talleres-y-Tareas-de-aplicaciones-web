@@ -10,11 +10,11 @@
 
   <header class="site-header">
     <div class="logo">
-      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
     </div>
   </header>
 
-  <main class="page-content">
+  <main class="page-content" style="max-width:760px;">
 
     <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
     <h1 class="page-title">Registro y Perfil del Graduado</h1>
@@ -25,12 +25,14 @@
       <h2 class="seccion-titulo">Datos Personales</h2>
       <p class="seccion-desc">Ingresa la información con la que podrán contactarte.</p>
 
+      <!-- Nombre completo -->
       <div class="form-group">
         <label for="nombre">Nombre completo</label>
         <input type="text" id="nombre" placeholder="Escribe tus nombres y apellidos">
         <span class="error-msg">Este campo es obligatorio.</span>
       </div>
 
+      <!-- Teléfono + Correo -->
       <div class="form-row">
         <div class="form-group">
           <label for="telefono">Número telefónico</label>
@@ -43,6 +45,27 @@
           <span class="error-msg">Ingresa un correo válido.</span>
         </div>
       </div>
+
+      <!-- Dirección + Ciudad -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" placeholder="Calle, número, sector o referencia">
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+        <div class="form-group">
+          <label for="ciudad">Ciudad de residencia</label>
+          <input type="text" id="ciudad" placeholder="Ej.: Portoviejo">
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+      </div>
+
+      <!-- Cédula o pasaporte (ancho completo) -->
+      <div class="form-group">
+        <label for="cedula">Cédula o pasaporte</label>
+        <input type="text" id="cedula" placeholder="Ej.: 0101234567 o número de pasaporte">
+        <span class="error-msg">Ingresa un número de cédula o pasaporte válido.</span>
+      </div>
     </section>
 
     <!-- ── SECCIÓN 2: Formación y Certificados ── -->
@@ -50,7 +73,7 @@
       <h2 class="seccion-titulo">Formación y Certificados</h2>
       <p class="seccion-desc">Añade la información de tu formación o adjunta los documentos que la respaldan.</p>
 
-      <!-- FILA: Títulos de pregrado -->
+      <!-- Títulos de pregrado -->
       <div class="formacion-fila">
         <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <path d="M12 3L2 8l10 5 10-5-10-5z"/>
@@ -58,19 +81,17 @@
         </svg>
         <div class="formacion-info">
           <strong>Títulos de pregrado</strong>
-          <span>Añade tus títulos universitarios.</span>
-          <!-- Los campos creados por agregarCampo() se insertan aquí -->
+          <span>Aún no has añadido títulos de Universidad.</span>
           <div id="campos-pregrado"></div>
         </div>
         <div class="formacion-acciones">
-          <!-- agregarCampo() verifica el último campo antes de crear uno nuevo -->
           <button class="btn-sm" onclick="agregarCampo('campos-pregrado')">+ Añadir título</button>
           <button class="btn-sm" onclick="document.getElementById('file-pregrado').click()">↑ Adjuntar documento</button>
           <input type="file" id="file-pregrado" class="input-archivo" accept=".pdf,.jpg,.png">
         </div>
       </div>
 
-      <!-- FILA: Maestrías -->
+      <!-- Maestrías -->
       <div class="formacion-fila">
         <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -78,7 +99,7 @@
         </svg>
         <div class="formacion-info">
           <strong>Maestrías cursadas</strong>
-          <span>Añade tus estudios de posgrado.</span>
+          <span>Aún no has añadido maestrías.</span>
           <div id="campos-maestria"></div>
         </div>
         <div class="formacion-acciones">
@@ -88,7 +109,7 @@
         </div>
       </div>
 
-      <!-- FILA: Certificados -->
+      <!-- Certificados -->
       <div class="formacion-fila">
         <svg class="formacion-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <circle cx="12" cy="12" r="9"/>
@@ -96,7 +117,7 @@
         </svg>
         <div class="formacion-info">
           <strong>Certificados obtenidos</strong>
-          <span>Añade cursos, idiomas u otros certificados.</span>
+          <span>Aún no has añadido certificados.</span>
           <div id="campos-cert"></div>
         </div>
         <div class="formacion-acciones">
@@ -111,15 +132,26 @@
 
     <!-- ── BARRA INFERIOR ── -->
     <div class="barra-footer">
-      <p class="ayuda">
-        ¿Necesitas ayuda? <a href="#">Contactar a soporte</a>
-      </p>
-      <button class="btn-continuar" onclick="validarRegistro()">
+  <button class="btn-volver" onclick="window.location.href='tipo_usuario.html'">← Volver</button>
+  <button class="btn-continuar" onclick="validarRegistro()">
         Guardar y Continuar →
       </button>
     </div>
+    <!-- BOTÓN TEMPORAL: saltar registro -->
+    <div style="text-align:right; margin-bottom:1rem;">
+      <a href="index.html" style="font-size:0.78rem; color:var(--texto-suave);">
+        [DEV] Saltar al index →
+      </a>
+    </div>
+     </div>
 
+      <p class="ayuda mt-2">
+        ¿Necesitas ayuda? <a href="#">Contactar a soporte</a>
+      </p>
+
+    </div>
   </main>
+  
 
   <footer class="site-footer">
     <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>

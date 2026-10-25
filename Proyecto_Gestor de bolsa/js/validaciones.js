@@ -207,3 +207,36 @@ function mostrarAviso(id, tipo, msg) {
 function ocultarAviso(id) {
   document.getElementById(id).className = 'aviso';
 }
+
+
+/* ── LOGIN ───────────────────────────────────── */
+
+/**
+ * Valida el formulario de login.
+ * Si pasa, navega a tipo_usuario.html (selección de tipo de cuenta)
+ * o directo a index.html si ya tiene cuenta.
+ */
+function validarLogin() {
+  const correo   = document.getElementById('correo').value;
+  const password = document.getElementById('password').value;
+  let valido = true;
+
+  if (!esCorreoValido(correo)) {
+    marcarCampo('correo', true);
+    valido = false;
+  } else {
+    marcarCampo('correo', false);
+  }
+
+  if (estaVacio(password)) {
+    marcarCampo('password', true);
+    valido = false;
+  } else {
+    marcarCampo('password', false);
+  }
+
+  /* Si todo es válido, navega al index (simula login exitoso) */
+  if (valido) {
+    window.location.href = 'index.html';
+  }
+}
