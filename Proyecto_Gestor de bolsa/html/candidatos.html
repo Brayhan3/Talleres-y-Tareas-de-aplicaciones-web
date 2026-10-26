@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidatos — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="dashboard_empresa.html">Panel de control</a>
+      <a href="candidatos.html" class="activo">Candidatos</a>
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="7" width="20" height="15" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+          Empresa
+        </button>
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil_empresa.html">Perfil de empresa</a>
+          <a href="login.html">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="flex:1;">
+    <div class="candidatos-layout">
+
+      <!-- Título -->
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
+        <div>
+          <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+          <h1 class="page-title" style="margin-bottom:0;">Candidatos</h1>
+          <p style="font-size:0.82rem; color:var(--texto-suave); margin-top:0.25rem;">
+            18 postulantes en total · 4 sin revisar
+          </p>
+        </div>
+        <a href="crear_oferta.html" class="btn-publicar">+ Publicar oferta</a>
+      </div>
+
+      <!-- Búsqueda + filtro por oferta -->
+      <div class="candidatos-controles">
+        <div class="sol-buscar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               style="width:15px;height:15px; color:var(--texto-suave); flex-shrink:0;">
+            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <!-- Filtra por nombre al escribir -->
+          <input type="text" id="buscar-candidato" placeholder="Buscar por nombre..."
+                 oninput="filtrarCandidatos()">
+        </div>
+        <!-- Filtra por oferta al cambiar -->
+        <select id="filtro-oferta" onchange="filtrarCandidatos()">
+          <option value="">Todas las ofertas</option>
+          <option value="Coordinador/a de proyectos">Coordinador/a de proyectos</option>
+          <option value="Analista de planificación">Analista de planificación</option>
+          <option value="Asistente administrativo">Asistente administrativo</option>
+          <option value="Desarrollador/a junior">Desarrollador/a junior</option>
+        </select>
+      </div>
+
+      <!-- Tabs de estado -->
+      <div class="candidatos-tabs">
+        <button class="tab-btn activo" onclick="filtrarEstado('todos', this)">
+          Todos <span style="opacity:0.7;">(18)</span>
+        </button>
+        <button class="tab-btn" onclick="filtrarEstado('Enviada', this)">
+          Enviadas <span style="opacity:0.7;">(8)</span>
+        </button>
+        <button class="tab-btn" onclick="filtrarEstado('En revisión', this)">
+          En revisión <span style="opacity:0.7;">(6)</span>
+        </button>
+        <button class="tab-btn" onclick="filtrarEstado('Aceptada', this)">
+          Aceptadas <span style="opacity:0.7;">(3)</span>
+        </button>
+        <button class="tab-btn" onclick="filtrarEstado('Rechazada', this)">
+          Rechazadas <span style="opacity:0.7;">(1)</span>
+        </button>
+      </div>
+
+      <!-- Lista de candidatos -->
+      <div id="lista-candidatos"></div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script>
+    /* ── DATOS DE EJEMPLO ── */
+    const CANDIDATOS = [
+      { iniciales:'BT', nombre:'Brayhan Torres',   oferta:'Coordinador/a de proyectos', carrera:'Ingeniería en Software · ULEAM',        formacion:'Maestría en TI · Certificado en Desarrollo Web', estado:'En revisión', tiempo:'Hace 1 h'  },
+      { iniciales:'MA', nombre:'María Alvarado',    oferta:'Analista de planificación',  carrera:'Administración de Empresas · ULEAM',    formacion:'Maestría en Administración',                      estado:'Enviada',     tiempo:'Hace 3 h'  },
+      { iniciales:'JR', nombre:'José Reyes',        oferta:'Asistente administrativo',   carrera:'Contabilidad y Auditoría · ULEAM',      formacion:'Título de pregrado',                              estado:'Aceptada',    tiempo:'Ayer'       },
+      { iniciales:'LC', nombre:'Laura Cedeño',      oferta:'Coordinador/a de proyectos', carrera:'Ingeniería Industrial · ULEAM',         formacion:'Maestría en Gestión de Proyectos',                estado:'Enviada',     tiempo:'Ayer'       },
+      { iniciales:'PR', nombre:'Pedro Rodríguez',   oferta:'Desarrollador/a junior',     carrera:'Ingeniería en Sistemas · ULEAM',        formacion:'Certificado en Desarrollo de Apps Web',           estado:'En revisión', tiempo:'Hace 2 días'},
+      { iniciales:'SC', nombre:'Sofía Castro',      oferta:'Analista de planificación',  carrera:'Economía · ULEAM',                      formacion:'Maestría en Finanzas · Título de pregrado',       estado:'Aceptada',    tiempo:'Hace 2 días'},
+      { iniciales:'DM', nombre:'Diego Moreira',     oferta:'Asistente administrativo',   carrera:'Administración de Empresas · ULEAM',    formacion:'Título de pregrado',                              estado:'Enviada',     tiempo:'Hace 3 días'},
+      { iniciales:'KV', nombre:'Karen Veloz',       oferta:'Coordinador/a de proyectos', carrera:'Ingeniería Civil · ULEAM',              formacion:'Maestría en Gestión · Certificado en Liderazgo',  estado:'Rechazada',   tiempo:'Hace 4 días'},
+      { iniciales:'AM', nombre:'Andrés Macías',     oferta:'Desarrollador/a junior',     carrera:'Ingeniería en Software · ULEAM',        formacion:'Certificado en React y Node.js',                  estado:'En revisión', tiempo:'Hace 4 días'},
+      { iniciales:'VT', nombre:'Valeria Torres',    oferta:'Analista de planificación',  carrera:'Administración de Empresas · ULEAM',    formacion:'Título de pregrado',                              estado:'Enviada',     tiempo:'Hace 5 días'},
+    ];
+
+    let estadoActivo = 'todos';
+
+    /* Renderiza las tarjetas según filtros activos */
+    function filtrarCandidatos() {
+      const texto  = document.getElementById('buscar-candidato').value.toLowerCase();
+      const oferta = document.getElementById('filtro-oferta').value;
+
+      const filtrados = CANDIDATOS.filter(c => {
+        const pasaNombre = c.nombre.toLowerCase().includes(texto);
+        const pasaOferta = !oferta || c.oferta === oferta;
+        const pasaEstado = estadoActivo === 'todos' || c.estado === estadoActivo;
+        return pasaNombre && pasaOferta && pasaEstado;
+      });
+
+      const lista = document.getElementById('lista-candidatos');
+
+      if (!filtrados.length) {
+        lista.innerHTML = '<div class="sin-resultados">No se encontraron candidatos con los filtros actuales.</div>';
+        return;
+      }
+
+      lista.innerHTML = filtrados.map(c => `
+        <div class="candidato-card">
+          <div class="candidato-avatar">${c.iniciales}</div>
+          <div class="candidato-info">
+            <div class="candidato-nombre">${c.nombre}</div>
+            <div class="candidato-meta">
+              <span>🎓 ${c.carrera}</span>
+              <span>💼 ${c.oferta}</span>
+            </div>
+            <div class="candidato-formacion">${c.formacion}</div>
+          </div>
+          <div class="candidato-derecha">
+            <span class="candidato-tiempo">${c.tiempo}</span>
+            <span class="badge ${claseBadge(c.estado)}">${c.estado}</span>
+            <!-- Select para cambiar el estado del candidato -->
+            <select class="select-estado" onchange="cambiarEstado(this, '${c.nombre}')">
+              <option value="">Cambiar estado</option>
+              <option>Enviada</option>
+              <option>En revisión</option>
+              <option>Aceptada</option>
+              <option>Rechazada</option>
+            </select>
+          </div>
+        </div>`).join('');
+    }
+
+    /* Devuelve la clase CSS del badge según el estado */
+    function claseBadge(estado) {
+      const mapa = {
+        'Enviada':     'badge-enviada',
+        'En revisión': 'badge-revision',
+        'Aceptada':    'badge-aceptada',
+        'Rechazada':   'badge-rechazada',
+      };
+      return mapa[estado] || 'badge-enviada';
+    }
+
+    /* Cambia el estado del candidato en el array y re-renderiza */
+    function cambiarEstado(select, nombre) {
+      const nuevoEstado = select.value;
+      if (!nuevoEstado) return;
+      const candidato = CANDIDATOS.find(c => c.nombre === nombre);
+      if (candidato) {
+        candidato.estado = nuevoEstado;
+        filtrarCandidatos();
+      }
+    }
+
+    /* Activa el tab de estado y re-filtra */
+    function filtrarEstado(estado, btn) {
+      estadoActivo = estado;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      filtrarCandidatos();
+    }
+
+    /* ── DROPDOWN ── */
+    function toggleDropdown() {
+      document.getElementById('dropdown-perfil').classList.toggle('abierto');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.querySelector('.perfil-menu');
+      if (menu && !menu.contains(e.target))
+        document.getElementById('dropdown-perfil').classList.remove('abierto');
+    });
+
+    /* Carga inicial */
+    document.addEventListener('DOMContentLoaded', filtrarCandidatos);
+  </script>
+</body>
+</html>

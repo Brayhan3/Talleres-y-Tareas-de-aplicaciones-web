@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicar oferta — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="dashboard_empresa.html">Panel de control</a>
+      <a href="candidatos.html">Candidatos</a>
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="7" width="20" height="15" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+          Empresa
+        </button>
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil_empresa.html">Perfil de empresa</a>
+          <a href="login.html">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="flex:1;">
+    <div class="crear-oferta-layout">
+
+      <!-- Título -->
+      <div style="margin-bottom:1.25rem;">
+        <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+        <h1 class="page-title" style="margin-bottom:0.25rem;">Publicar oferta</h1>
+        <p style="font-size:0.83rem; color:var(--texto-suave);">Los campos marcados con * son obligatorios.</p>
+      </div>
+
+      <!-- ── SECCIÓN 1: Información del puesto ── -->
+      <div class="crear-oferta-seccion">
+        <h2>Información del puesto</h2>
+        <p>Datos principales que verán los candidatos en el listado de ofertas.</p>
+
+        <!-- Título del puesto -->
+        <div class="form-group">
+          <label for="titulo">Título del puesto *</label>
+          <input type="text" id="titulo" placeholder="Ej.: Coordinador/a de proyectos">
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+
+        <!-- Área + Modalidad -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="area">Área profesional *</label>
+            <select id="area">
+              <option value="">Selecciona un área</option>
+              <option>Administración</option>
+              <option>Tecnología</option>
+              <option>Contabilidad</option>
+              <option>Diseño</option>
+              <option>Salud</option>
+              <option>Educación</option>
+              <option>Otro</option>
+            </select>
+            <span class="error-msg">Selecciona un área.</span>
+          </div>
+          <div class="form-group">
+            <label for="modalidad">Modalidad *</label>
+            <select id="modalidad">
+              <option value="">Selecciona la modalidad</option>
+              <option>Presencial</option>
+              <option>Híbrida</option>
+              <option>Remota</option>
+            </select>
+            <span class="error-msg">Selecciona una modalidad.</span>
+          </div>
+        </div>
+
+        <!-- Jornada + Experiencia -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="jornada">Tipo de jornada *</label>
+            <select id="jornada">
+              <option value="">Selecciona la jornada</option>
+              <option>Tiempo completo</option>
+              <option>Medio tiempo</option>
+              <option>Por proyecto</option>
+            </select>
+            <span class="error-msg">Selecciona una jornada.</span>
+          </div>
+          <div class="form-group">
+            <label for="experiencia">Experiencia requerida *</label>
+            <select id="experiencia">
+              <option value="">Selecciona la experiencia</option>
+              <option>Sin experiencia</option>
+              <option>1 a 3 años</option>
+              <option>Más de 3 años</option>
+            </select>
+            <span class="error-msg">Selecciona la experiencia.</span>
+          </div>
+        </div>
+
+        <!-- Ubicación + Salario -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ubicacion">Ubicación *</label>
+            <input type="text" id="ubicacion" placeholder="Ej.: Manta, Manabí">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label for="salario">Salario aproximado *</label>
+            <input type="text" id="salario" placeholder="Ej.: USD 800–1.100 / mes">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SECCIÓN 2: Descripción de la oferta ── -->
+      <div class="crear-oferta-seccion">
+        <h2>Descripción de la oferta</h2>
+        <p>Esta información aparecerá en el detalle de la oferta que verán los candidatos.</p>
+
+        <!-- Lo que se espera -->
+        <div class="form-group">
+          <label for="descripcion">Descripción general *</label>
+          <textarea id="descripcion"
+            placeholder="Ej.: Administración de Empresas · Maestría en Gestión de Proyectos"></textarea>
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+
+        <!-- Lo que se espera del trabajo -->
+        <div class="form-group">
+          <label for="esperado">Lo que se espera del trabajo *</label>
+          <textarea id="esperado"
+            placeholder="Describe las responsabilidades principales del puesto..."></textarea>
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+
+        <!-- Qué hay que aprender -->
+        <div class="form-group">
+          <label for="aprender">Qué hay que aprender / conocimientos requeridos *</label>
+          <textarea id="aprender"
+            placeholder="Herramientas, habilidades o conocimientos relevantes para el puesto..."></textarea>
+          <span class="error-msg">Este campo es obligatorio.</span>
+        </div>
+
+        <!-- Capacitación -->
+        <div class="form-group">
+          <label for="capacitacion">Capacitación por parte de la empresa
+            <span style="font-weight:400; color:var(--texto-suave)">(opcional)</span>
+          </label>
+          <textarea id="capacitacion"
+            placeholder="Describe si la empresa ofrece capacitación inicial o continua..."></textarea>
+        </div>
+      </div>
+
+      <!-- ── SECCIÓN 3: Etiquetas ── -->
+      <div class="crear-oferta-seccion">
+        <h2>Etiquetas
+          <span style="font-weight:400; font-size:0.82rem; color:var(--texto-suave)"> (opcional)</span>
+        </h2>
+        <p>Palabras clave que ayudan a los candidatos a identificar los requisitos destacados.</p>
+        <div class="form-group" style="margin-bottom:0;">
+          <input type="text" id="etiquetas"
+            placeholder="Ej.: Título afín, Maestría valorada (separadas por coma)">
+        </div>
+      </div>
+
+      <!-- ── BARRA INFERIOR ── -->
+      <div class="reg-empresa-barra">
+        <button class="btn-volver"
+                onclick="window.location.href='dashboard_empresa.html'">← Volver</button>
+        <div style="display:flex; gap:0.75rem;">
+          <!-- Publicar: valida y redirige al dashboard -->
+          <button class="btn-continuar" onclick="publicarOferta()">
+            Publicar oferta →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL: Oferta publicada con éxito -->
+  <div class="modal-overlay" id="modal-publicada" onclick="cerrarSiEsFondo(event,'modal-publicada')">
+    <div class="modal" style="text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:0.75rem;">✅</div>
+      <div class="modal-titulo">¡Oferta publicada!</div>
+      <div class="modal-msg">
+        La oferta fue publicada correctamente y ya es visible para los candidatos
+        en la Bolsa de Empleo ULEAM.
+      </div>
+      <div class="modal-acciones" style="justify-content:center;">
+        <a href="dashboard_empresa.html" class="btn btn-primary">Ir al panel</a>
+        <button class="btn btn-secondary" onclick="cerrarModal('modal-publicada')">Publicar otra</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script>
+    /* Dropdown empresa */
+    function toggleDropdown() {
+      document.getElementById('dropdown-perfil').classList.toggle('abierto');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.querySelector('.perfil-menu');
+      if (menu && !menu.contains(e.target))
+        document.getElementById('dropdown-perfil').classList.remove('abierto');
+    });
+
+    /* Validación y publicación de oferta */
+    function publicarOferta() {
+      let valido = true;
+
+      /* Selects obligatorios */
+      ['area', 'modalidad', 'jornada', 'experiencia'].forEach(id => {
+        const val = document.getElementById(id).value;
+        if (!val) { marcarCampo(id, true);  valido = false; }
+        else       { marcarCampo(id, false); }
+      });
+
+      /* Inputs de texto obligatorios */
+      ['titulo', 'ubicacion', 'salario', 'descripcion', 'esperado', 'aprender'].forEach(id => {
+        const val = document.getElementById(id).value;
+        if (estaVacio(val)) { marcarCampo(id, true);  valido = false; }
+        else                { marcarCampo(id, false); }
+      });
+
+      /* Si todo pasó, muestra modal de éxito */
+      if (valido) abrirModal('modal-publicada');
+    }
+  </script>
+</body>
+</html>

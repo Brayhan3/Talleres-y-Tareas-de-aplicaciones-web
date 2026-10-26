@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de empresa — ULEAM</title>
+  <link rel="stylesheet" href="../css/style_global.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="../img/LOGO-ULEAM-HORIZONTAL.png" alt="ULEAM" style="width:150px;">
+    </div>
+    <nav class="nav-principal">
+      <a href="dashboard_empresa.html">Panel de control</a>
+      <a href="candidatos.html">Candidatos</a>
+      <div class="perfil-menu">
+        <button class="btn-perfil" onclick="toggleDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="7" width="20" height="15" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          </svg>
+          Empresa
+        </button>
+        <div class="dropdown" id="dropdown-perfil">
+          <a href="perfil_empresa.html">Perfil de empresa</a>
+          <a href="login.html">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="flex:1;">
+    <div style="max-width:1000px; margin:0 auto; padding:1.5rem 2rem; width:100%;">
+      <p class="eyebrow">Bolsa de Empleo · ULEAM</p>
+      <h1 class="page-title">Perfil de empresa</h1>
+      <p class="page-subtitle">Mantén los datos de la empresa actualizados y gestiona el acceso al panel.</p>
+    </div>
+
+    <div class="perfil-empresa-layout">
+
+      <!-- ══ COLUMNA IZQUIERDA ══ -->
+      <div>
+
+        <!-- Avatar empresa -->
+        <div class="empresa-avatar-card">
+          <div class="empresa-avatar">CH</div>
+          <div class="empresa-nombre">Consultora Horizonte</div>
+          <div class="empresa-sector">Servicios profesionales · Manta, Manabí</div>
+          <span class="empresa-estado">✓ Cuenta verificada</span>
+        </div>
+
+        <!-- Datos de la compañía -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">Datos de la compañía</div>
+
+          <!-- Nombre comercial -->
+          <div class="dato-fila">
+            <div class="dato-label">Nombre comercial</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-nombre-comercial">Consultora Horizonte</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('nombre-comercial')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-nombre-comercial">
+              <input type="text" id="input-nombre-comercial" placeholder="Nombre comercial">
+              <span class="error-msg">Este campo es obligatorio.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('nombre-comercial', 'texto')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('nombre-comercial')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RUC -->
+          <div class="dato-fila">
+            <div class="dato-label">RUC</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-ruc">1390012345001</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('ruc')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-ruc">
+              <input type="text" id="input-ruc" placeholder="13 dígitos del RUC" maxlength="13">
+              <span class="error-msg">El RUC debe tener 13 dígitos.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('ruc', 'ruc')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('ruc')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ciudad -->
+          <div class="dato-fila">
+            <div class="dato-label">Ciudad</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-ciudad-emp">Manta, Manabí</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('ciudad-emp')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-ciudad-emp">
+              <input type="text" id="input-ciudad-emp" placeholder="Ciudad de la empresa">
+              <span class="error-msg">Este campo es obligatorio.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('ciudad-emp', 'texto')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('ciudad-emp')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sitio web -->
+          <div class="dato-fila">
+            <div class="dato-label">Sitio web</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-sitio-web">https://consultorahorizonte.com.ec</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('sitio-web')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-sitio-web">
+              <input type="url" id="input-sitio-web" placeholder="https://www.empresa.com">
+              <span class="error-msg">Ingresa una URL válida.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('sitio-web', 'url')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('sitio-web')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Datos del representante -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">Datos del representante</div>
+
+          <!-- Nombre -->
+          <div class="dato-fila">
+            <div class="dato-label">Nombre completo</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-rep-nombre">Ana Rodríguez</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('rep-nombre')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-rep-nombre">
+              <input type="text" id="input-rep-nombre" placeholder="Nombre del representante">
+              <span class="error-msg">Este campo es obligatorio.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('rep-nombre', 'texto')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('rep-nombre')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Correo -->
+          <div class="dato-fila">
+            <div class="dato-label">Correo corporativo</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-correo-emp">ana@consultorahorizonte.com.ec</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('correo-emp')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-correo-emp">
+              <input type="email" id="input-correo-emp" placeholder="correo@empresa.com">
+              <span class="error-msg">Ingresa un correo válido.</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('correo-emp', 'email')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('correo-emp')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="dato-fila">
+            <div class="dato-label">Teléfono de contacto</div>
+            <div class="dato-valor-wrap">
+              <span class="dato-valor" id="val-tel-emp">0991234567</span>
+              <button class="btn-editar-dato" onclick="abrirEdicion('tel-emp')">Editar</button>
+            </div>
+            <div class="dato-edit-wrap" id="edit-tel-emp">
+              <input type="tel" id="input-tel-emp" placeholder="09XXXXXXXX">
+              <span class="error-msg">Ingresa un número válido (9–10 dígitos).</span>
+              <div class="dato-edit-acciones">
+                <button class="btn-guardar-dato" onclick="guardarDato('tel-emp', 'tel')">✓ Guardar</button>
+                <button class="btn-cancelar-dato" onclick="cancelarEdicion('tel-emp')">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin columna izquierda -->
+
+      <!-- ══ COLUMNA DERECHA ══ -->
+      <div>
+
+        <!-- Seguridad: cambio de contraseña -->
+        <div class="perfil-seccion" style="margin-bottom:1rem;">
+          <div class="perfil-seccion-titulo">🔒 Seguridad</div>
+          <p style="font-size:0.82rem; color:var(--texto-suave); margin-bottom:1rem;">
+            Cambia tu contraseña de acceso al panel. Usa una contraseña segura que no hayas usado antes.
+          </p>
+
+          <div class="form-group">
+            <label for="pass-actual">Contraseña actual</label>
+            <input type="password" id="pass-actual" placeholder="••••••••">
+            <span class="error-msg">Este campo es obligatorio.</span>
+          </div>
+          <div class="form-group">
+            <label for="pass-nueva">Nueva contraseña</label>
+            <input type="password" id="pass-nueva" placeholder="Mínimo 8 caracteres">
+            <span class="error-msg">La contraseña debe tener al menos 8 caracteres.</span>
+          </div>
+          <div class="form-group">
+            <label for="pass-confirmar">Confirmar nueva contraseña</label>
+            <input type="password" id="pass-confirmar" placeholder="Repite la nueva contraseña">
+            <span class="error-msg">Las contraseñas no coinciden.</span>
+          </div>
+
+          <button class="btn-continuar" style="width:100%; justify-content:center;"
+                  onclick="cambiarContrasena()">
+            Actualizar contraseña
+          </button>
+
+          <!-- Aviso de resultado -->
+          <div id="aviso-pass" class="aviso mt-1"></div>
+        </div>
+
+        <!-- Resumen de actividad -->
+        <div class="perfil-seccion">
+          <div class="perfil-seccion-titulo">📊 Actividad de la cuenta</div>
+          <div class="resumen-tabla" style="margin-top:0.5rem;">
+            <div class="resumen-fila">
+              <span>Ofertas publicadas</span><span>5</span>
+            </div>
+            <div class="resumen-fila">
+              <span>Ofertas activas</span><span>3</span>
+            </div>
+            <div class="resumen-fila">
+              <span>Total postulantes</span><span>18</span>
+            </div>
+            <div class="resumen-fila">
+              <span>Cuenta creada</span><span>Oct 2026</span>
+            </div>
+            <div class="resumen-fila">
+              <span>Estado</span>
+              <span style="color:#1e8449; font-weight:600;">Verificada</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin columna derecha -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ULEAM · Universidad Laica Eloy Alfaro de Manabí</span>
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos de uso</a>
+    </div>
+  </footer>
+
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/perfil_empresa.js"></script>
+</body>
+</html>
