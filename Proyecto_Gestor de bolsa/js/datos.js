@@ -135,3 +135,22 @@ const OFERTAS = [
     recomendada: false
   }
 ];
+
+
+/* =============================================
+   CANDIDATOS
+   Postulantes de ejemplo vinculados a las ofertas
+   por ofertaId (referencia al id de OFERTAS).
+   ============================================= */
+const CANDIDATOS = [
+  { iniciales:'BT', nombre:'Brayhan Torres',  ofertaId:1, carrera:'Ingeniería en Software · ULEAM',      formacion:'Maestría en TI · Certificado en Desarrollo Web',         estado:'En revisión', tiempo:'Hace 1 h'   },
+  { iniciales:'LC', nombre:'Laura Cedeño',    ofertaId:1, carrera:'Ingeniería Industrial · ULEAM',       formacion:'Maestría en Gestión de Proyectos',                        estado:'Enviada',     tiempo:'Ayer'        },
+  { iniciales:'KV', nombre:'Karen Veloz',     ofertaId:1, carrera:'Ingeniería Civil · ULEAM',            formacion:'Maestría en Gestión · Certificado en Liderazgo',          estado:'Rechazada',   tiempo:'Hace 4 días' },
+  { iniciales:'MA', nombre:'María Alvarado',  ofertaId:2, carrera:'Administración de Empresas · ULEAM', formacion:'Maestría en Administración',                              estado:'Enviada',     tiempo:'Hace 3 h'    },
+  { iniciales:'SC', nombre:'Sofía Castro',    ofertaId:2, carrera:'Economía · ULEAM',                   formacion:'Maestría en Finanzas · Título de pregrado',               estado:'Aceptada',    tiempo:'Hace 2 días' },
+  { iniciales:'VT', nombre:'Valeria Torres',  ofertaId:2, carrera:'Administración de Empresas · ULEAM', formacion:'Título de pregrado',                                      estado:'Enviada',     tiempo:'Hace 5 días' },
+  { iniciales:'JR', nombre:'José Reyes',      ofertaId:4, carrera:'Contabilidad y Auditoría · ULEAM',   formacion:'Título de pregrado',                                      estado:'Aceptada',    tiempo:'Ayer'        },
+  { iniciales:'DM', nombre:'Diego Moreira',   ofertaId:4, carrera:'Administración de Empresas · ULEAM', formacion:'Título de pregrado',                                      estado:'Enviada',     tiempo:'Hace 3 días' },
+  { iniciales:'PR', nombre:'Pedro Rodríguez', ofertaId:3, carrera:'Ingeniería en Sistemas · ULEAM',     formacion:'Certificado en Desarrollo de Apps Web',                   estado:'En revisión', tiempo:'Hace 2 días' },
+  { iniciales:'AM', nombre:'Andrés Macías',   ofertaId:3, carrera:'Ingeniería en Software · ULEAM',     formacion:'Certificado en React y Node.js',                          estado:'En revisión', tiempo:'Hace 4 días' },
+];

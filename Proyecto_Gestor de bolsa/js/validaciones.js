@@ -213,7 +213,7 @@ function ocultarAviso(id) {
 
 /**
  * Valida el formulario de login.
- * Si pasa, navega a tipo_usuario.html (selección de tipo de cuenta)
+ * Si pasa, navega a tipo-usuario.html (selección de tipo de cuenta)
  * o directo a index.html si ya tiene cuenta.
  */
 function validarLogin() {
@@ -240,3 +240,23 @@ function validarLogin() {
     window.location.href = 'index.html';
   }
 }
+
+
+/* ── DROPDOWN NAV (compartido en todas las páginas) ── */
+
+/**
+ * Abre o cierra el dropdown de navegación.
+ * Usado en index, oferta, perfil, solicitudes,
+ * dashboard_empresa, perfil_empresa y candidatos.
+ */
+function toggleDropdown() {
+  document.getElementById('dropdown-perfil').classList.toggle('abierto');
+}
+
+/* Cierra el dropdown al hacer clic fuera del menú */
+document.addEventListener('click', function(e) {
+  const menu = document.querySelector('.perfil-menu');
+  if (menu && !menu.contains(e.target)) {
+    document.getElementById('dropdown-perfil').classList.remove('abierto');
+  }
+});

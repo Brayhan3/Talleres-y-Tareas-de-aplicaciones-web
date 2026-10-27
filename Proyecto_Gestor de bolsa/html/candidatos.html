@@ -49,17 +49,15 @@
 
       <!-- Búsqueda + filtro por oferta -->
       <div class="candidatos-controles">
-        <div class="sol-buscar">
+        <div class="buscador-input" style="flex:1; min-width:200px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               style="width:15px;height:15px; color:var(--texto-suave); flex-shrink:0;">
+              style="width:16px;height:16px;">
             <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
           </svg>
-          <!-- Filtra por nombre al escribir -->
           <input type="text" id="buscar-candidato" placeholder="Buscar por nombre..."
-                 oninput="filtrarCandidatos()">
+                oninput="filtrarCandidatos()">
         </div>
-        <!-- Filtra por oferta al cambiar -->
-        <select id="filtro-oferta" onchange="filtrarCandidatos()">
+        <select id="filtro-oferta" onchange="filtrarCandidatos()" class="buscador-ubicacion">
           <option value="">Todas las ofertas</option>
           <option value="Coordinador/a de proyectos">Coordinador/a de proyectos</option>
           <option value="Analista de planificación">Analista de planificación</option>
@@ -101,21 +99,15 @@
     </div>
   </footer>
 
+  <script src="../js/datos.js"></script>
   <script src="../js/validaciones.js"></script>
   <script>
-    /* ── DATOS DE EJEMPLO ── */
-    const CANDIDATOS = [
-      { iniciales:'BT', nombre:'Brayhan Torres',   oferta:'Coordinador/a de proyectos', carrera:'Ingeniería en Software · ULEAM',        formacion:'Maestría en TI · Certificado en Desarrollo Web', estado:'En revisión', tiempo:'Hace 1 h'  },
-      { iniciales:'MA', nombre:'María Alvarado',    oferta:'Analista de planificación',  carrera:'Administración de Empresas · ULEAM',    formacion:'Maestría en Administración',                      estado:'Enviada',     tiempo:'Hace 3 h'  },
-      { iniciales:'JR', nombre:'José Reyes',        oferta:'Asistente administrativo',   carrera:'Contabilidad y Auditoría · ULEAM',      formacion:'Título de pregrado',                              estado:'Aceptada',    tiempo:'Ayer'       },
-      { iniciales:'LC', nombre:'Laura Cedeño',      oferta:'Coordinador/a de proyectos', carrera:'Ingeniería Industrial · ULEAM',         formacion:'Maestría en Gestión de Proyectos',                estado:'Enviada',     tiempo:'Ayer'       },
-      { iniciales:'PR', nombre:'Pedro Rodríguez',   oferta:'Desarrollador/a junior',     carrera:'Ingeniería en Sistemas · ULEAM',        formacion:'Certificado en Desarrollo de Apps Web',           estado:'En revisión', tiempo:'Hace 2 días'},
-      { iniciales:'SC', nombre:'Sofía Castro',      oferta:'Analista de planificación',  carrera:'Economía · ULEAM',                      formacion:'Maestría en Finanzas · Título de pregrado',       estado:'Aceptada',    tiempo:'Hace 2 días'},
-      { iniciales:'DM', nombre:'Diego Moreira',     oferta:'Asistente administrativo',   carrera:'Administración de Empresas · ULEAM',    formacion:'Título de pregrado',                              estado:'Enviada',     tiempo:'Hace 3 días'},
-      { iniciales:'KV', nombre:'Karen Veloz',       oferta:'Coordinador/a de proyectos', carrera:'Ingeniería Civil · ULEAM',              formacion:'Maestría en Gestión · Certificado en Liderazgo',  estado:'Rechazada',   tiempo:'Hace 4 días'},
-      { iniciales:'AM', nombre:'Andrés Macías',     oferta:'Desarrollador/a junior',     carrera:'Ingeniería en Software · ULEAM',        formacion:'Certificado en React y Node.js',                  estado:'En revisión', tiempo:'Hace 4 días'},
-      { iniciales:'VT', nombre:'Valeria Torres',    oferta:'Analista de planificación',  carrera:'Administración de Empresas · ULEAM',    formacion:'Título de pregrado',                              estado:'Enviada',     tiempo:'Hace 5 días'},
-    ];
+    /* CANDIDATOS viene de datos.js — no duplicar aquí */
+    /* Agrega oferta como texto resolviendo desde OFERTAS por ofertaId */
+    const candidatos = CANDIDATOS.map(c => ({
+      ...c,
+      oferta: (OFERTAS.find(o => o.id === c.ofertaId) || {}).titulo || '—'
+    }));
 
     let estadoActivo = 'todos';
 
@@ -124,7 +116,7 @@
       const texto  = document.getElementById('buscar-candidato').value.toLowerCase();
       const oferta = document.getElementById('filtro-oferta').value;
 
-      const filtrados = CANDIDATOS.filter(c => {
+      const filtrados = candidatos.filter(c => {
         const pasaNombre = c.nombre.toLowerCase().includes(texto);
         const pasaOferta = !oferta || c.oferta === oferta;
         const pasaEstado = estadoActivo === 'todos' || c.estado === estadoActivo;
@@ -179,7 +171,7 @@
     function cambiarEstado(select, nombre) {
       const nuevoEstado = select.value;
       if (!nuevoEstado) return;
-      const candidato = CANDIDATOS.find(c => c.nombre === nombre);
+      const candidato = candidatos.find(c => c.nombre === nombre);
       if (candidato) {
         candidato.estado = nuevoEstado;
         filtrarCandidatos();
@@ -193,16 +185,6 @@
       btn.classList.add('activo');
       filtrarCandidatos();
     }
-
-    /* ── DROPDOWN ── */
-    function toggleDropdown() {
-      document.getElementById('dropdown-perfil').classList.toggle('abierto');
-    }
-    document.addEventListener('click', function(e) {
-      const menu = document.querySelector('.perfil-menu');
-      if (menu && !menu.contains(e.target))
-        document.getElementById('dropdown-perfil').classList.remove('abierto');
-    });
 
     /* Carga inicial */
     document.addEventListener('DOMContentLoaded', filtrarCandidatos);
